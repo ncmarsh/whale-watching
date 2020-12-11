@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS whales_db;
+
+CREATE DATABASE whales_db;
