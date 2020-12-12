@@ -1,12 +1,9 @@
-const express = require("express");
-const router = express.Router();
-
 // Import the models
 const db = require("../models");
 
 module.exports = function(app) {
-  router.get("/", function(req, res) {
-    db.sighting.all(function(data) {
+  app.get("/", function(req, res) {
+    db.sighting.findAll(function(data) {
       let hbsObject = {
         sightings: data
       };
