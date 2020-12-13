@@ -11,9 +11,18 @@ module.exports = function(app) {
   });
 
   // GET route for getting all of the sightings near a city
-  app.get("/api/sightings/:city", function(req, res) {
+  app.get("/api/sightings/:location", function(req, res) {
     db.Sighting.findAll({
         city: req.params.city
+    }).then(function(data) {
+      res.json(data);
+    })
+  });
+
+  // GET route for getting all of the sightings for a particular whale
+  app.get("/api/sightings/:whale", function(req, res) {
+    db.Sighting.findAll({
+        whaleType: req.params.whaleType
     }).then(function(data) {
       res.json(data);
     })
