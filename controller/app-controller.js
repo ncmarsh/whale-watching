@@ -13,12 +13,13 @@ module.exports = function(app) {
     //   console.log(hbsObject);
     //   res.render("index", hbsObject);
     // });
-    db.Sighting.findAll({})
-      .then(function(data) {
-        let hbsObject = {
-          sightings: data
-        };
-      });
+    // db.Sighting.findAll({})
+    //   .then(function(data) {
+    //     let hbsObject = {
+    //       sightings: data
+    //     };
+    //   });
+    res.render('landing')
   });
 
 }
