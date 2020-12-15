@@ -13,16 +13,16 @@ passport.use(new LocalStrategy(
            }                    
         })
         .then(user => {
-        //If a user is not found with the entered username
-        if (!user) {
-            return done(null, false, { message: 'Incorrect username.' });
-        }
-        //if password is not valid
-        if (!user.validPassword(password)) {
-            return done(null, false, { message: 'Incorrect password.' });
-        }
-        //If username and password are correct, return the user
-        return done(null, user);
+            //If a user is not found with the entered username
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+            //if password is not valid
+            if (!user.validPassword(password)) {
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            //If username and password are correct, return the user
+            return done(null, user);
         })        
     }
 ));
