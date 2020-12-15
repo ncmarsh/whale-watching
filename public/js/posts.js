@@ -1,5 +1,3 @@
-const sighting = require("../../models/sighting");
-
 $(document).ready(function() {
     $("#select-city").on("click", function(event) {
         let city = $("#city").val().trim();
@@ -17,7 +15,9 @@ $(document).ready(function() {
      *          on submit button call POST (/api/sightings)
      *          then go to /sightings
      */
-    $("#create-post").on("click",function(event){
+    $("#create-post").on("click",handlePostCreate);
+
+    function handlePostCreate() {
         $.get("/api/user_data").then(function(data) {
             if (!data){
                 ///show instead of form error message
@@ -34,13 +34,53 @@ $(document).ready(function() {
                     specificLocation: specificLocation,
                     description: description
                 }
-                $.post('/api/sightings',new_sighting).then(function(data){
-                    window.location.reload();
-                }) 
+                postCreate(new_sighting); 
             }
             
+          }); 
+    }
+    /**
+     * Edit or delete post
+     * check if user not logged .get("api/user_data")
+     * check that user id == post.user_id
+     * collect new data and set PUT
+     *$.ajax("/api/cats", {
+      type: "PUT" 
+      data: newCat
+      
+    }).then( window.location.reload());
+    for DELETE 
+     */
+    function postCreate(data){
+        $.post('/api/sightings',data).then(function(){
+            window.location.reload();
+        })
+    }
+
+    function postUpdate(data){
+        $.ajax({
+            method: "PUT",
+            url: "/api/sightings",
+            data: data
+          })
+        .then(function(){
+            window.location.reload();
+        })
+    }
+
+    function deletePost(id) {
+        $.ajax({
+          method: "DELETE",
+          url: "/api/sightings/" + id
+        })
+          .then(function() {
+            window.location.reload();
           });
-    })
+      }
+
+
+
+    
  //// Example of conditional modal   
  /* 
     $("#my-test-btn").on("click",function(event){
