@@ -41,7 +41,7 @@ $(document).ready(function() {
             }
             else{
                 let userId = data.id   
-                let city = $("new-city").val();
+                let city = $("#new-city").val();
                 let specificLocation = $("#specificLocation").val().trim();
                 let description = $("#description").val().trim();
                 ///data from form maybe changed depend of form
