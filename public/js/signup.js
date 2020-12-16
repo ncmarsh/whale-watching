@@ -6,8 +6,10 @@ $(document).ready(function() {
     var lastNameInput = $("input#lastname-input");
     var firstNameInput = $("input#firstname-input");
     var emailInput = $("input#email-input");
+    var phoneNumberInput = $("input#phonenumber-input");
     var passwordInput = $("input#password-input");
     var receiveNotification = $("input#receiveNotification")
+    
     console.log(receiveNotification)
     // When the signup button is clicked, we validate the email and password are not blank
     signUpForm.on("submit", function(event) {
@@ -17,6 +19,7 @@ $(document).ready(function() {
         lastName: lastNameInput.val().trim(),
         firstName: firstNameInput.val().trim(),  
         email: emailInput.val().trim(),
+        phoneNumber: phoneNumberInput.val().trim(),
         password: passwordInput.val().trim(),
         receiveNotification:  receiveNotification.is(':checked')
       };
