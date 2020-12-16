@@ -22,25 +22,22 @@ module.exports = function(app) {
 
   //Serve home handlebars page & required data
   app.get("/sightings", function(req, res) {
-    db.Sighting.findAll({}).then(function(data) {
-      // createdAt
-      // city
-      // description
-      // userName
-      // UserID
+    db.Sighting.findAll({
+      include: [db.User]
+    }).then(function(data) {
       let arr = [];
       data.forEach(e => {
         arr.push({
           createdAt: e.dataValues.createdAt,
           city: e.dataValues.city,
           description: e.dataValues.description,
-          userName: e.dataValues.UserId,
+          userName: e.dataValues.User.userName,
+          userId: e.dataValues.UserId
         })
       });
       let hbsObject = {
         sighting: arr
       }
-      console.log(hbsObject);
       res.render("sightings", hbsObject);
     });
   });
