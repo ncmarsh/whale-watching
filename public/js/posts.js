@@ -1,19 +1,4 @@
 $(document).ready(function() {
-    /**
-     * check if users?
-     * $.get("/api/user_data").then(function(data){
-     * if (!data){
-     * ///show login/signup
-     * $(#log-div).show();
-     * $(#acc-div).hide();
-     * }
-     * else{
-     * ///show link to account page
-     * $(#log-div).hide();
-     * $(#acc-div).show();
-     * }
-     * })
-     */
 
 
     $("#select-city").on("click", function(event) {
@@ -32,7 +17,7 @@ $(document).ready(function() {
      *          on submit button call POST (/api/sightings)
      *          then go to /sightings
      */
-    $("#create-post").on("click",handlePostCreate);
+    $("#create-post").on("click",handlePostCreateWithoutLogging);
 
     function handlePostCreate() {
         $.get("/api/user_data").then(function(data) {
@@ -55,6 +40,21 @@ $(document).ready(function() {
             }
             
           }); 
+    }
+
+    function handlePostCreateWithoutLogging(){
+        let userId = data.id   
+        let city = $("#new-city").val();
+        let specificLocation = $("#specificLocation").val().trim();
+        let description = $("#description").val().trim();
+                ///data from form maybe changed depend of form
+        new_sighting = {
+            UserID: userId,
+            city: city,
+            specificLocation: specificLocation,
+            description: description
+            }
+        postCreate(new_sighting); 
     }
     /**
      * Edit or delete post
