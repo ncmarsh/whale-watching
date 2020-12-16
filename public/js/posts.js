@@ -1,4 +1,21 @@
 $(document).ready(function() {
+    /**
+     * check if users?
+     * $.get("/api/user_data").then(function(data){
+     * if (!data){
+     * ///show login/signup
+     * $(#log-div).show();
+     * $(#acc-div).hide();
+     * }
+     * else{
+     * ///show link to account page
+     * $(#log-div).hide();
+     * $(#acc-div).show();
+     * }
+     * })
+     */
+
+
     $("#select-city").on("click", function(event) {
         let city = $("#city").val().trim();
         window.location.replace("/city/"+city);
