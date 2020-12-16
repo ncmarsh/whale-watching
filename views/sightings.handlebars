@@ -3,9 +3,10 @@
     <!-- Lefthand links -->
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-            <li class="uk-active"><a href="/">Home</a></li>
-            <li class="uk-parent"><a href="/sightings">Historical Sightings</a></li>
+            <li class="uk-parent"><a href="/">Home</a></li>
+            <li class="uk-active"><a href="/sightings">Historical Sightings</a></li>
             <li class="uk-parent"><a href="/resources">Find Out More</a></li>
+            <li><a href=""></a></li>
         </ul>
     </div>
     <!-- Center logo -->
@@ -22,4 +23,13 @@
         </ul>
     </div>
 </nav>
-
+<h1 class="uk-heading-divider">Historical Sightings</h1>
+<!-- drop down here for filters -->
+{{!-- Sightings list --}}
+<div>
+    <ul class="uk=list uk-list-striped">
+        {{#each sighting}}
+            {{> sightings/sight-block}}
+        {{/each}}
+    </ul>
+</div>
