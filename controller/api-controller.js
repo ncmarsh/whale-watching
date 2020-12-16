@@ -63,18 +63,31 @@ module.exports = function(app) {
   });
 
   function fetchSubscribers(sighting) {
-    let subject = 'PNW-WhalerWatchers'
     let msg = `
       A whale has been sighted!
 
-      ${json.strify(data)}`
+      ${json.strify(data)}
+    `;
 
+    // Testing hardcoded values
+    // let nums = await ['12064120323'];
+    // notifySubscribers(nums, msg);
+    
     //DB call for list of subscribers
-    let nums = ['12064120323']
-    notifySubscribers(nums, msg);
+    db.User.findAll({
+      where: {
+        receiveNotification: true
+      }
+    }).then(function(data) {
+      console.log("User data fron DB: ", data);
+      // data.forEach(element => {
+      //   console.log("About to message ", element);
+        // notifySubscribers(data, msg);
+      // });
+    })
   };
 
-  function notifySubscribers(subscriberArr, sighting) {
+  function notifySubscribers(num, msg) {
     //Foreach subscriber, send text;
     let params = {
       Message: msg,
@@ -82,7 +95,7 @@ module.exports = function(app) {
       MessageAttributes: {
           'AWS.SNS.SMS.SenderID': {
               'DataType': 'String',
-              'StringValue': subject
+              'StringValue': "PNW-Whale-Watchers"
           }
       }
     };
