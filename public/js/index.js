@@ -17,8 +17,8 @@ $(document).ready(function() {
      *          on submit button call POST (/api/sightings)
      *          then go to /sightings
      */
-    $("#create-post").on("click",handlePostCreateWithoutLogging);
-
+    $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
+    
     function handlePostCreate() {
         $.get("/api/user_data").then(function(data) {
             if (!data){
@@ -42,18 +42,20 @@ $(document).ready(function() {
           }); 
     }
 
-    function handlePostCreateWithoutLogging(){
-        let userId = data.id   
-        let city = $("#new-city").val();
-        let specificLocation = $("#specificLocation").val().trim();
-        let description = $("#description").val().trim();
+    function handlePostCreateWithoutLogging(event){
+        event.preventDefault();
+        let userId = 1; 
+        let city = $("#new-post-city").val();
+        //let specificLocation = $("#specificLocation").val().trim();
+        let description = $("#new-post-description").val().trim();
                 ///data from form maybe changed depend of form
         new_sighting = {
-            UserID: userId,
+            UserId: userId,
             city: city,
-            specificLocation: specificLocation,
+            specificLocation: city,
             description: description
             }
+        console.log(new_sighting);
         postCreate(new_sighting); 
     }
     /**
