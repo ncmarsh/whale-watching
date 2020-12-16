@@ -24,7 +24,29 @@
         </ul>
     </div>
 </nav>
-<h1 class="uk-heading-divider">Historical Sightings</h1>
+<h1 class="uk-heading-divider uk-text-center">Historical Sightings
+    <!-- Modal for new sighting post -->
+    <!-- Button toggling the modal -->
+    <button id="new-post-btn" uk-toggle="target: #new-post" class="uk-button uk-button-large" type="button">Add New Sighting</button>
+
+    <!-- Form to add new sighting post -->
+    <div id="new-post" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+            <h2 class="uk-modal-title">New Whale Sighting</h2>
+            <form>
+                <select class="uk-select">
+                    <option>Bellingham</option>
+                    <option>Bremerton</option>
+                    <option>Edmonds</option>
+                    <option>Seattle</option>
+                </select>
+                <textarea class="uk-textarea"></textarea>
+                <button class="uk-button uk-button-default">Submit</button>
+            </form>
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+        </div>
+    </div>
+</h1>
 <!-- drop down here for filters -->
 {{!-- Sightings list --}}
 <div>
