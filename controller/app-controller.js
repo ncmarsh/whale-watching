@@ -23,8 +23,9 @@ module.exports = function(app) {
   //Serve home handlebars page & required data
   app.get("/sightings", function(req, res) {
     db.Sighting.findAll({}).then(function(data) {
+      console.log(data)
       let hbsObject = {
-        data: data 
+        sighting: data 
       };
       res.render("sightings", hbsObject);
     });
