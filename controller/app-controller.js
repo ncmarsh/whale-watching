@@ -4,28 +4,33 @@ const db = require("../models");
 module.exports = function(app) {
   //Serve home handlebars page & required data
   app.get("/", function(req, res) {
-
-    let hbsObject = {
-      data: null //any data needed for page?
-    };
-      res.render("index", hbsObject);
+    res.render("index");
 
   });
 
   //Serve Resources handlebars page
   app.get("/resources", function(req, res) {
-    let hbsObject = {
-      data: null //any data needed for page?
-    };
-      res.render("resources", hbsObject);
+      res.render("resources");
     });
 
   //Serve home handlebars page & required data
   app.get("/sightings", function(req, res) {
-    db.Sighting.findAll({}).then(function(data) {
+    db.Sighting.findAll({
+      include: [db.User]
+    }).then(function(data) {
+      let arr = [];
+      data.forEach(e => {
+        arr.push({
+          createdAt: e.dataValues.createdAt,
+          city: e.dataValues.city,
+          description: e.dataValues.description,
+          userName: e.dataValues.User.userName,
+          userId: e.dataValues.UserId
+        })
+      });
       let hbsObject = {
-        data: data 
-      };
+        sighting: arr
+      }
       res.render("sightings", hbsObject);
     });
   });
@@ -53,6 +58,4 @@ module.exports = function(app) {
       res.render("sightings", hbsObject);
     })
   });
-
-
 }
