@@ -26,11 +26,21 @@ module.exports = function(app) {
       // createdAt
       // city
       // description
-      // user
-      console.log(data);
+      // userName
+      // UserID
+      let arr = [];
+      data.forEach(e => {
+        arr.push({
+          createdAt: e.dataValues.createdAt,
+          city: e.dataValues.city,
+          description: e.dataValues.description,
+          userName: e.dataValues.UserId,
+        })
+      });
       let hbsObject = {
-        data: data 
-      };
+        sighting: arr
+      }
+      console.log(hbsObject);
       res.render("sightings", hbsObject);
     });
   });
