@@ -7,6 +7,9 @@ module.exports = function(sequelize, DataTypes) {
       specificLocation: {
           type: DataTypes.STRING,
           allowNull: false
+      },
+      whaleType: {
+          type: DataTypes.STRING
       },      
       description: {
           type: DataTypes.TEXT,

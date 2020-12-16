@@ -7,8 +7,13 @@ const exphbs = require("express-handlebars");
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
 
-// Creating express app and configuring middleware needed for authentication
+
 const app = express();
+
+//render static pages in public folder
+app.use(express.static("public"));
+
+//configuring middleware needed for authentication
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

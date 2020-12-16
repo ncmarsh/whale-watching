@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     userName: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false
     },
     email: {
@@ -26,6 +27,15 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    phoneNumber: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        //validates whether the entered phone number matches this RegExp
+        //source: stackoverflow
+        is: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+      }
     },
     receiveNotification: {
         type: DataTypes.BOOLEAN,

@@ -4,10 +4,12 @@ const db = require("../models");
 module.exports = function(app) {
   //Serve home handlebars page & required data
   app.get("/", function(req, res) {
+
     let hbsObject = {
       data: null //any data needed for page?
     };
       res.render("index", hbsObject);
+
   });
 
   //Serve Resources handlebars page
