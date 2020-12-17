@@ -1,38 +1,45 @@
 ///copy from example
 $(document).ready(function() {
     // Getting references to our form and input
-    var signUpForm = $("form.signup");
-    var userNameInput = $("input#username-input");
-    var lastNameInput = $("input#lastname-input");
-    var firstNameInput = $("input#firstname-input");
-    var emailInput = $("input#email-input");
-    var phoneNumberInput = $("input#phonenumber-input");
-    var passwordInput = $("input#password-input");
-    var receiveNotification = $("input#receiveNotification")
+    let signUpForm = $("form#signup-form");
+    let signupBtn = $("#signup-btn");
     
-    console.log(receiveNotification)
+    console.log("Hi There");
     // When the signup button is clicked, we validate the email and password are not blank
-    signUpForm.on("submit", function(event) {
+    signupBtn.on("click", function(event) {
       event.preventDefault();
-      var userData = {
+      let userNameInput = $("input#username");
+      let lastNameInput = $("input#last-name");
+      let firstNameInput = $("input#first-name");
+      let emailInput = $("input#email");
+      let phoneNumberInput = $("input#phone");
+      let passwordInput = $("input#password");
+      let receiveNotification = $("#notification");
+      let x = $('input[name=radio2]:checked').val();
+      //console.log(receiveNotification.children());
+
+      console.log('======');
+      let userData = {
         userName: userNameInput.val().trim(),
         lastName: lastNameInput.val().trim(),
         firstName: firstNameInput.val().trim(),  
         email: emailInput.val().trim(),
         phoneNumber: phoneNumberInput.val().trim(),
         password: passwordInput.val().trim(),
-        receiveNotification:  receiveNotification.is(':checked')
+        receiveNotification:  x=="Yes"
       };
-  
+      console.log(userData);
       if (!userData.userName ||!userData.lastName ||!userData.firstName ||!userData.email || !userData.password) {
         return;
       }
       // If we have an email and password, run the signUpUser function
-      signUpUser(userData);
+      signUpUserTest(userData);
       //emailInput.val("");
       //passwordInput.val("");
     });
-  
+    function signUpUserTest(userData){
+      $("#olga-test").text(JSON.stringify(userData));
+    }
     // Does a post to the signup route. If successful, we are redirected to the members page
     // Otherwise we log any errors
     function signUpUser(userData) {
@@ -48,7 +55,7 @@ $(document).ready(function() {
         
       })
         .then(function(data) {
-          window.location.replace("/members"); ///change
+          window.location.reload(); ///change
           // If there's an error, handle it by throwing up a bootstrap alert
         })
         .catch(handleLoginErr);
