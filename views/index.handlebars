@@ -15,8 +15,8 @@
     <!-- Righthand links -->
     <div class="uk-navbar-right">
         <ul class="uk-breadcrumb">
-            <li class="uk-active"><a href="">Log In</a></li>
-            <li class="uk-active"><a href="">Sign Up</a></li>
+            <li class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
+            <li class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
             <!-- If logged in -->
             <li class="uk-parent"><a href="">Manage Account</a></li>
             <li class="uk-parent"><a href="">Log Out</a></li>
@@ -24,3 +24,5 @@
     </div>
 </nav>
 
+{{> modals/login-block}}
+{{> modals/signup-block}}
