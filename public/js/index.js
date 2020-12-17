@@ -3,7 +3,13 @@ $(document).ready(function() {
 
     $("#select-city").on("click", function(event) {
         let city = $("#city").val().trim();
-        window.location.replace("/city/"+city);
+        window.location.replace("/sightings/city/"+city);
+    });
+    $("#select-both").on("click", function(event) {
+        let city = $("#city").val().trim();
+        let whale = $("#whale").val().trim();
+        let filters = {city:city, whaleTyoe:whale};
+        $.get("/sightings/filter",filters).then(function(data){});
     });
 
     /**

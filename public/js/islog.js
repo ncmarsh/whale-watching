@@ -14,7 +14,7 @@ $(document).ready(function() {
      * }
      * })
      */
-    $.get("api/user_data").then(function(data){
+    $.get("/api/user_data").then(function(data){
         if(!data){
             /// show login sign up
             $("#login-link").show();
