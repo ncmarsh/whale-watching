@@ -34,6 +34,7 @@ module.exports = function(app) {
       req.body
     ).then(function(data) {
       res.json(data);
+      fetchSubscribers(data);
     })
   });
 
@@ -60,4 +61,53 @@ module.exports = function(app) {
       res.json(data);
     })
   });
-}
+
+  function fetchSubscribers(sighting) {
+    let msg = `
+      A whale has been sighted!
+
+      ${json.strify(data)}
+    `;
+
+    // Testing hardcoded values
+    // let nums = await ['12064120323'];
+    // notifySubscribers(nums, msg);
+    
+    //DB call for list of subscribers
+    db.User.findAll({
+      where: {
+        receiveNotification: true
+      }
+    }).then(function(data) {
+      console.log("User data fron DB: ", data);
+      // data.forEach(element => {
+      //   console.log("About to message ", element);
+        // notifySubscribers(data, msg);
+      // });
+    })
+  };
+
+  function notifySubscribers(num, msg) {
+    //Foreach subscriber, send text;
+    let params = {
+      Message: msg,
+      PhoneNumber: '+' + num,
+      MessageAttributes: {
+          'AWS.SNS.SMS.SenderID': {
+              'DataType': 'String',
+              'StringValue': "PNW-Whale-Watchers"
+          }
+      }
+    };
+    const publishTextPromise = new AWS.SNS({ apiVersion: '2010-03-31' }).publish(params).promise();
+    publishTextPromise.then(
+      function (data) {
+        console.log(`SNS Successful! ${data}`);
+      }
+    ).catch(
+      function (err) {
+          console.log(`An SNS error has occured: ${err}`);
+      }
+    )
+  };
+};
