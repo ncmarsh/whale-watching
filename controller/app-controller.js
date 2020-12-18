@@ -13,6 +13,7 @@ module.exports = function(app) {
       res.render("resources");
     });
 
+
   //Serve home handlebars page & required data
   app.get("/sightings", function(req, res) {
     db.Sighting.findAll({
