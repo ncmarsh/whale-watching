@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+    /// Future code for filtering
     $("#select-city").on("click", function(event) {
         let city = $("#city").val().trim();
         window.location.replace("/sightings/city/"+city);
@@ -9,6 +9,8 @@ $(document).ready(function() {
         let city = $("#city").val().trim();
         let whale = $("#whale").val().trim();
         let filters = {city:city, whaleTyoe:whale};
+        /// will not work that way
+        /// shoukd be reload location filter/city/whale
         $.get("/sightings/filter",filters).then(function(data){});
     });
 
@@ -23,19 +25,29 @@ $(document).ready(function() {
      *          on submit button call POST (/api/sightings)
      *          then go to /sightings
      */
-    $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
+   // $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
+    $("#submit-post-btn").on("click",handlePostCreate);
     
-    function handlePostCreate() {
+    function handlePostCreate(event) {
+        event.preventDefault();
         $.get("/api/user_data").then(function(data) {
-            if (!data){
+            //console.log(data);
+            //console.log(!data);
+            ///console.log(data ==={});
+            ///console.log(JSON.stringify(data)==='{}');
+            if (JSON.stringify(data)==='{}'){
                 ///show instead of form error message
-                
+                let npEl = $("#new-post");
+                let html = `<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+                <h2 class="uk-modal-title">You not logged</h2> </div>`;
+                npEl.html(html);
             }
             else{
+                console.log('data'+JSON.stringify(data));
                 let userId = data.id   
-                let city = $("#new-city").val();
-                let specificLocation = $("#specificLocation").val().trim();
-                let description = $("#description").val().trim();
+                let city = $("#new-post-city").val();
+                let specificLocation = city;
+                let description = $("#new-post-description").val().trim();
                 ///data from form maybe changed depend of form
                 new_sighting = {
                     UserId: userId,

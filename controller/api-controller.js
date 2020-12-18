@@ -66,6 +66,7 @@ module.exports = function(app) {
 
   //POST route for loggin in a known user
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    console.log("Trying to login!!!!");
     res.json(req.user);
   });
 
@@ -99,6 +100,7 @@ module.exports = function(app) {
       res.redirect(307, "/api/login");
     })
     .catch(function(err) {
+      console.log(err);
       res.status(401).json(err);
     });
   });
