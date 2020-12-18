@@ -1,7 +1,7 @@
 // Requiring necessary npm packages
 const express = require("express");
 const exphbs = require("express-handlebars");
-// const router = express.Router();
+const router = express.Router();
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;

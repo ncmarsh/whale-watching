@@ -5,9 +5,18 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
       },
       specificLocation: {
+        // type: DataTypes.GEOMETRY('POINT'),
           type: DataTypes.STRING,
-          allowNull: false
+                allowNull: false
       },
+      // lat: {
+      //   type: DataTypes.FLOAT,
+      //   allowNull: false
+      // },
+      // lng: {
+      //   type: DataTypes.FLOAT,
+      //   allowNull: false
+      // },
       whaleType: {
           type: DataTypes.STRING
       },      
