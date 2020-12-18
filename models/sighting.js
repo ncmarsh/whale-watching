@@ -17,9 +17,9 @@ module.exports = function(sequelize, DataTypes) {
       //   type: DataTypes.FLOAT,
       //   allowNull: false
       // },
-      whaleType: {
-          type: DataTypes.STRING
-      },      
+      // whaleType: {
+      //     type: DataTypes.STRING
+      // },      
       description: {
           type: DataTypes.TEXT,
           allowNull: false

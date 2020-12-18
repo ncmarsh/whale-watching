@@ -46,11 +46,13 @@
         </div>
     </div>
 </h1>
+
 {{> modals/login-block}}
 {{> modals/signup-block}}
+
 <!-- drop down here for filters -->
 {{!-- Sightings list --}}
-<div>
+<div class="uk-container">
     <ul class="uk=list uk-list-striped">
         {{#each sighting}}
             {{> sightings/sight-block}}
