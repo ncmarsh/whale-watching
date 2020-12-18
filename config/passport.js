@@ -9,7 +9,7 @@ passport.use(new LocalStrategy(
       // When a user tries to sign in this code runs and ckecks if a user exists with this username
         db.User.findOne({  
            where: {
-            username: username      
+            userName: username      
            }                    
         })
         .then(user => {
