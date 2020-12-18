@@ -25,7 +25,7 @@ $(document).ready(function() {
      *          on submit button call POST (/api/sightings)
      *          then go to /sightings
      */
-    //$("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
+   // $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
     $("#submit-post-btn").on("click",handlePostCreate);
     
     function handlePostCreate(event) {

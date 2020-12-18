@@ -17,7 +17,7 @@ $(document).ready(function() {
       let receiveNotification = $("#notification");
       let x = $('input[name=radio2]:checked').val();
       //console.log(receiveNotification.children());
-
+      console.log(x);
       console.log('======');
       let userData = {
         userName: userNameInput.val().trim(),
@@ -45,25 +45,26 @@ $(document).ready(function() {
     function signUpUser(userData) {
         console.log(userData)
       $.post("/api/signup", {
-        userName: userData.userName,
+        
         firstName: userData.firstName,
-        lastName: userData.lastName,  
+        lastName: userData.lastName, 
+        userName: userData.userName, 
         email: userData.email,
-        phoneNumber: userData.phoneNumber,
         password: userData.password,
-        receiveNotification: userData.receiveNotification
+        phoneNumber: userData.phoneNumber,
+        
+        receiveNotification: 0//userData.receiveNotification
         
       })
         .then(function(data) {
-          window.location.reload(); ///change
+          window.location.replace("/"); ///change
           // If there's an error, handle it by throwing up a bootstrap alert
         })
-        .catch(handleLoginErr);
+        //.catch(handleLoginErr);
     }
   
     function handleLoginErr(err) {
-      $("#alert .msg").text(err.responseJSON);
-      $("#alert").fadeIn(500);
+      alert('llllll')
     }
   });
   
