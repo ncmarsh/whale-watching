@@ -15,11 +15,11 @@
     <!-- Righthand links -->
     <div class="uk-navbar-right">
         <ul class="uk-breadcrumb">
-            <li class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
-            <li class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
+            <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
+            <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
             <!-- If logged in -->
-            <li class="uk-parent"><a href="">Manage Account</a></li>
-            <li class="uk-parent"><a href="">Log Out</a></li>
+            <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
+            <li id="logout" class="uk-parent"><a href="">Log Out</a></li>
         </ul>
     </div>
 </nav>
@@ -27,28 +27,37 @@
 {{> modals/login-block}}
 {{> modals/signup-block}}
 
-<h1 class="uk-text-center">Welcome {{userName}}!</h1>
-<hr class="uk-divider-icon">
-<div class="uk-container">
-    <div uk-slideshow>
-        <ul class="uk-slideshow-items">
+{{!-- <h1 class="uk-text-center">Welcome {{userName}}!</h1>
+<hr class="uk-divider-icon"> --}}
+
+<div class="uk-cover-container">
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: false; autoplay: true; autoplay-interval: 4000">
+        <ul class="uk-slideshow-items" uk-height-viewport="expand: true; min-height: 500">
             <li>
-                <img src="/images/background/orcas-bk.jpg" alt="Orcas" uk-cover>
+                <img src="/images/background/orcas-bk.jpg" alt="Orcas">
             </li>
             <li>
-                <img src="/images/background/gray-whale-bk.jpg" alt="Gray whale" uk-cover>
+                <img src="/images/background/gray-whale-bk.jpg" alt="Gray whale">
             </li>
             <li>
-                <img src="/images/background/orca-fam-bk.jpg" alt="Orca family" uk-cover>
+                <img src="/images/background/orca-fam-bk.jpg" alt="Orca family">
             </li>
             <li>
-                <img src="/images/background/humpback-bk.jpeg" alt="Humpback whales" uk-cover>
+                <img src="/images/background/humpback-bk.jpeg" alt="Humpback whales">
             </li>
             <li>
-                <img src="/images/background/orca-water-bk.jpg" alt="Orcas" uk-cover>
+                <img src="/images/background/orca-water-bk.jpg" alt="Orca surfacing">
             </li>
         </ul>
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
     </div>
-    <a href="/resources">Find Out More</a>
-    <a href="/sightings">View Historical Sightings</a>
+</div>
+<div uk-grid>
+    <div class="uk-card uk-card-hover uk-card-body uk-card-small uk-card-secondary uk-width-1-2">
+        <h3 class="uk-card-title"><a href="/resources">Find Out More</a></h3>
+    </div>
+    <div class="uk-card uk-card-hover uk-card-body uk-card-secondary uk-width-1-2">
+        <h3 class="uk-card-title"><a href="/sightings">View Historical Sightings</a></h3>
+    </div>
 </div>
