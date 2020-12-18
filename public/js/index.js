@@ -29,6 +29,7 @@ $(document).ready(function() {
         $.get("/api/user_data").then(function(data) {
             if (!data){
                 ///show instead of form error message
+                
             }
             else{
                 let userId = data.id   
@@ -37,7 +38,7 @@ $(document).ready(function() {
                 let description = $("#description").val().trim();
                 ///data from form maybe changed depend of form
                 new_sighting = {
-                    UserID: userId,
+                    UserId: userId,
                     city: city,
                     specificLocation: specificLocation,
                     description: description
