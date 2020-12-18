@@ -1,4 +1,16 @@
+/* Sightings Page */
+/* Position the add new sighting post button */
 #add-post-btn {
     position: absolute;
     right: 20px;
+}
+
+/* Resources Page */
+/* Size and position of logos */
+.logo-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 100%;
 }
