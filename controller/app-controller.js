@@ -15,6 +15,14 @@ module.exports = function(app) {
 
 
   //Serve home handlebars page & required data
+  // app.get("/sightings", function(req, res) {
+  //   db.Sighting.findAll({}).then(function(data) {
+  //     let hbsObject = {
+  //       data: data 
+  //     };
+  //     res.render("sightings", hbsObject);
+  //   });
+  // });
   app.get("/sightings", function(req, res) {
     db.Sighting.findAll({
       include: [db.User]
