@@ -4,21 +4,15 @@ const db = require("../models");
 module.exports = function(app) {
   //Serve home handlebars page & required data
   app.get("/", function(req, res) {
-
-    let hbsObject = {
-      data: null //any data needed for page?
-    };
-      res.render("index", hbsObject);
+    res.render("index");
 
   });
 
   //Serve Resources handlebars page
   app.get("/resources", function(req, res) {
-    let hbsObject = {
-      data: null //any data needed for page?
-    };
-      res.render("resources", hbsObject);
-  });
+      res.render("resources");
+    });
+
 
   //Serve home handlebars page & required data
   // app.get("/sightings", function(req, res) {
@@ -73,6 +67,4 @@ module.exports = function(app) {
       res.render("sightings", hbsObject);
     })
   });
-
-
 }
