@@ -21,11 +21,31 @@ module.exports = function(app) {
   });
 
   //Serve home handlebars page & required data
+  // app.get("/sightings", function(req, res) {
+  //   db.Sighting.findAll({}).then(function(data) {
+  //     let hbsObject = {
+  //       data: data 
+  //     };
+  //     res.render("sightings", hbsObject);
+  //   });
+  // });
   app.get("/sightings", function(req, res) {
-    db.Sighting.findAll({}).then(function(data) {
+    db.Sighting.findAll({
+      include: [db.User]
+    }).then(function(data) {
+      let arr = [];
+      data.forEach(e => {
+        arr.push({
+          createdAt: e.dataValues.createdAt,
+          city: e.dataValues.city,
+          description: e.dataValues.description,
+          userName: e.dataValues.User.userName,
+          userId: e.dataValues.UserId
+        })
+      });
       let hbsObject = {
-        data: data 
-      };
+        sighting: arr
+      }
       res.render("sightings", hbsObject);
     });
   });
