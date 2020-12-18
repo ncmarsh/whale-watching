@@ -33,7 +33,7 @@ $(document).ready(function() {
         return;
       }
       // If we have an email and password, run the signUpUser function
-      signUpUserTest(userData);
+      signUpUser(userData);
       //emailInput.val("");
       //passwordInput.val("");
     });
