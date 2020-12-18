@@ -4,16 +4,6 @@ const passport = require("../config/passport");
 
 module.exports = function(app) {
 
-<<<<<<< HEAD
-  // GET login Status of user
-  app.get("/api/userId/:id", function(req, res) {
-    db.User.findAll({
-      UserId: req.params.id
-    }).then(function(data) {
-      res.json(data);
-    })
-  });
-=======
   // GET route for getting all of the sightings
   // app.get("/api/sightings", function(req, res) {
   //   db.Sighting.findAll({}).then(function(data) {
@@ -38,7 +28,6 @@ module.exports = function(app) {
   //     res.json(data);
   //   })
   // });
->>>>>>> Develop
 
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
@@ -118,7 +107,7 @@ module.exports = function(app) {
     let msg = `
       A whale has been sighted!
 
-      ${json.strify(data)}
+      Log-in to www.PNWWhalewatch.com to see where
     `;
 
     // Testing hardcoded values
