@@ -1,5 +1,6 @@
 const db = require("../models");
 const passport = require("../config/passport");
+const AWS = require('aws-sdk');
 
 
 module.exports = function(app) {
@@ -105,14 +106,14 @@ module.exports = function(app) {
 
   function fetchSubscribers(sighting) {
     let msg = `
-      A whale has been sighted!
+      A whale has been sighted near ${sighting.city}! 
 
-      Log-in to www.PNWWhalewatch.com to see where
+      www.PNWWhalewatch.com for details
     `;
 
     // Testing hardcoded values
-    let nums = '12064120323';
-    notifySubscribers(nums, msg);
+    let nums = [12064120323];
+    // notifySubscribers(nums, msg);
     
     //DB call for list of subscribers
     db.User.findAll({
@@ -120,11 +121,11 @@ module.exports = function(app) {
         receiveNotification: true
       }
     }).then(function(data) {
-      console.log("Users to be notified: ", data);
-      // data.forEach(element => {
-      //   console.log("About to message ", element);
-        // notifySubscribers(data, msg);
-      // });
+      console.log("Users to be notified: ");
+      nums.forEach(element => { //change to data[] from db
+        console.log("About to message ", element);
+        notifySubscribers(element, msg);
+      });
     })
   };
 
@@ -136,16 +137,12 @@ module.exports = function(app) {
       MessageAttributes: {
           'AWS.SNS.SMS.SenderID': {
               'DataType': 'String',
-              'StringValue': "PNW-Whale-Watchers"
+              'StringValue': "PNWWhaler"
           }
       }
     };
     const publishTextPromise = new AWS.SNS({ apiVersion: '2010-03-31' }).publish(params).promise();
-    publishTextPromise.then(
-      function (data) {
-        console.log(`SNS Successful! ${data}`);
-      }
-    ).catch(
+    publishTextPromise.catch(
       function (err) {
           console.log(`An SNS error has occured: ${err}`);
       }
