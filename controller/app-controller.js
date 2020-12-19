@@ -29,7 +29,9 @@ module.exports = function(app) {
     }).then(function(data) {
       let arr = [];
       data.forEach(e => {
+        //console.log(e.dataValues);
         arr.push({
+          id : e.dataValues.id,
           createdAt: e.dataValues.createdAt,
           city: e.dataValues.city,
           description: e.dataValues.description,
