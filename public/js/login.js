@@ -1,11 +1,8 @@
 ////just copy from example
 $(document).ready(function() {
-    // Getting references to our form and inputs
-    //var loginForm = $("form.login");
-    //var userNameInput = $("input#username-input");
-    //var passwordInput = $("input#password-input");
-  
-    // When the form is submitted, we validate there's an email and password entered
+    
+
+
     logBtn = $("#login-btn");
     logBtn.on("click", function(event) {
       let userNameInput = $("#login-username");
@@ -35,12 +32,13 @@ $(document).ready(function() {
         password: password
       })
         .then(function() {
-          window.location.reload();  ///Change this
+          window.location.replace("/sightings");  ///Change this
           // If there's an error, log the error
-        });
-       /* .catch(function(err) {
+        })
+       .catch(function(err) {
+          alert("something went wrong, try again");
           console.log(err);
-        });*/
+        });
     }
     //test function DELETE
     /* function loginUser2(userName, password) {
