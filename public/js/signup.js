@@ -53,18 +53,18 @@ $(document).ready(function() {
         password: userData.password,
         phoneNumber: userData.phoneNumber,
         
-        receiveNotification: 0//userData.receiveNotification
+        receiveNotification: userData.receiveNotification? 1:0
         
       })
         .then(function(data) {
           window.location.replace("/"); ///change
           // If there's an error, handle it by throwing up a bootstrap alert
         })
-        //.catch(handleLoginErr);
+        .catch(handleLoginErr);
     }
   
     function handleLoginErr(err) {
-      alert('llllll')
+      alert('Something went wrong, try again please');
     }
   });
   
