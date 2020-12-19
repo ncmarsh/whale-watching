@@ -1,8 +1,52 @@
+div.wallpaper {
+    background-image: url(../images/background/whale-spy-hop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+/* Welcome page */
+/* Slide show images */
+.ss-pic {
+    width: 100%;
+    height: 500px;
+}
+
 /* Sightings Page */
 /* Position the add new sighting post button */
 #add-post-btn {
     position: absolute;
     right: 20px;
+}
+
+.sighting-post {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #bbbbbb;
+}
+
+.sight-card-body {
+    padding: 0.5rem;
+}
+
+li.sight-list {
+    list-style-type: none;
+}
+
+.edit-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
+}
+
+button.user-edit {
+    border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 /* Resources Page */
