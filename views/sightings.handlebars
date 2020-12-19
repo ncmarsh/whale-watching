@@ -3,7 +3,7 @@
     <!-- Lefthand links -->
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-            <li class="uk-parent"><a href="/">Home</a></li>
+            <li class="uk-parent"><a href="/"><span uk-icon="home"></span></a></li>
             <li class="uk-active"><a href="/sightings">Historical Sightings</a></li>
             <li class="uk-parent"><a href="/resources">Find Out More</a></li>
         </ul>
@@ -25,23 +25,22 @@
         </ul>
     </div>
 </nav>
-<h1 class="uk-heading-divider uk-text-center">Historical Sightings
-    <!-- Modal for new sighting post -->
-    <!-- Button toggling the modal -->
-    <button id="add-post-btn" uk-toggle="target: #new-post" class="uk-button uk-button-large" type="button">Add New Sighting</button>
+<div class="wallpaper">
+    <h1 class="uk-heading-divider uk-text-center">Historical Sightings
+        <!-- Modal for new sighting post -->
+        <!-- Button toggling the modal -->
+        <button id="add-post-btn" uk-toggle="target: #new-post" class="uk-button uk-button-large" type="button">Add New Sighting</button>
 
-    {{> sightings/new-post}}
-</h1>
+        {{> sightings/new-post}}
+    </h1>
 
-{{> modals/login-block}}
-{{> modals/signup-block}}
+    {{> modals/login-block}}
+    {{> modals/signup-block}}
 
-<!-- drop down here for filters -->
-{{!-- Sightings list --}}
-<div class="uk-container">
-    <ul class="uk=list uk-list-striped">
+    {{!-- Sightings list --}}
+    <div class="uk-container uk-grid-row-large">
         {{#each sighting}}
             {{> sightings/sight-block}}
         {{/each}}
-    </ul>
+    </div>
 </div>
