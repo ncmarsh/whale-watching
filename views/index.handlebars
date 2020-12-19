@@ -3,7 +3,7 @@
     <!-- Lefthand links -->
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-            <li class="uk-active"><a href="/">Home</a></li>
+            <li class="uk-active"><a href="/"><span uk-icon="home"></span></a></li>
             <li class="uk-parent"><a href="/sightings">Historical Sightings</a></li>
             <li class="uk-parent"><a href="/resources">Find Out More</a></li>
         </ul>
@@ -29,26 +29,26 @@
 {{> modals/login-block}}
 {{> modals/signup-block}}
 
-{{!-- <h1 class="uk-text-center">Welcome {{userName}}!</h1>
-<hr class="uk-divider-icon"> --}}
+<h1 class="uk-text-center">Welcome {{userName}}!</h1>
+<hr class="uk-divider-icon">
 
 <div class="uk-cover-container">
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: false; autoplay: true; autoplay-interval: 4000">
         <ul class="uk-slideshow-items" uk-height-viewport="expand: true; min-height: 500">
             <li>
-                <img src="/images/background/orcas-bk.jpg" alt="Orcas">
+                <img class="ss-pic" src="/images/background/orcas-bk.jpg" alt="Orcas">
             </li>
             <li>
-                <img src="/images/background/gray-whale-bk.jpg" alt="Gray whale">
+                <img class="ss-pic" src="/images/background/gray-whale-bk.jpg" alt="Gray whale">
             </li>
             <li>
-                <img src="/images/background/orca-fam-bk.jpg" alt="Orca family">
+                <img class="ss-pic" src="/images/background/orca-fam-bk.jpg" alt="Orca family">
             </li>
             <li>
-                <img src="/images/background/humpback-bk.jpeg" alt="Humpback whales">
+                <img class="ss-pic" src="/images/background/humpback-bk.jpeg" alt="Humpback whales">
             </li>
             <li>
-                <img src="/images/background/orca-water-bk.jpg" alt="Orca surfacing">
+                <img class="ss-pic" src="/images/background/orca-water-bk.jpg" alt="Orca surfacing">
             </li>
         </ul>
         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
