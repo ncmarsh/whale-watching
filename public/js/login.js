@@ -1,12 +1,10 @@
 ////just copy from example
 $(document).ready(function() {
-    // Getting references to our form and inputs
-    //var loginForm = $("form.login");
-    //var userNameInput = $("input#username-input");
-    //var passwordInput = $("input#password-input");
-  
-    // When the form is submitted, we validate there's an email and password entered
-    loginForm.on("submit", function(event) {
+    
+
+
+    logBtn = $("#login-btn");
+    logBtn.on("click", function(event) {
       let userNameInput = $("#login-username");
       let passwordInput = $("#login-password");
       event.preventDefault();
@@ -28,15 +26,17 @@ $(document).ready(function() {
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(userName, password) {
         //console.log(userName,password,'api/login');
+        console.log(userName,password);
       $.post("/api/login", {
         userName: userName,
         password: password
       })
         .then(function() {
-          window.location.reload();  ///Change this
+          window.location.replace("/sightings");  ///Change this
           // If there's an error, log the error
         })
-        .catch(function(err) {
+       .catch(function(err) {
+          alert("something went wrong, try again");
           console.log(err);
         });
     }
