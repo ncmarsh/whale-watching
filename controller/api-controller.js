@@ -123,12 +123,13 @@ module.exports = function(app) {
     }).then(function(data) {
       console.log("Users to be notified: ");
       nums.forEach(element => { //change to data[] from db
-        try {
-          var number = parseInt(element);
-        } catch (error) {
-          console.error(error);
-        };
-        notifySubscribers(number, msg);
+        // try {
+        //   var number = parseInt(element);
+        // } catch (error) {
+        //   console.error(error);
+        // };
+        // notifySubscribers(number, msg);
+        notifySubscribers(element, msg);
       });
     })
   };
