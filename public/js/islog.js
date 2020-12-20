@@ -32,8 +32,8 @@ $(document).ready(function() {
             $("#logout").show();
             $("#manage").show()
             // and name
-            let fullName = data.firstName + ' '+data.lastName;
-            console.log(fullName);
+            //let fullName = data.firstName + ' '+data.lastName;
+            //console.log(fullName);
         }
     })
 });
