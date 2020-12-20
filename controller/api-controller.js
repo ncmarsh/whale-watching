@@ -3,9 +3,9 @@ const passport = require("../config/passport");
 const AWS = require('aws-sdk');
 const multer = require("multer");
 
-const mbxGeocodig = require('@mapbox/mapbox-sdk/services/geocoding')
-const mapToken = process.env.MAPBOX_TOKEN;
-const geoCoder = mbxGeocodig({accessToken: mapToken});
+// const mbxGeocodig = require('@mapbox/mapbox-sdk/services/geocoding')
+// const mapToken = process.env.MAPBOX_TOKEN;
+// const geoCoder = mbxGeocodig({accessToken: mapToken});
 
 module.exports = function(app) {
   var storage = multer.memoryStorage();
