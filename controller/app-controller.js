@@ -11,7 +11,7 @@ module.exports = function(app) {
   //Serve Resources handlebars page
   app.get("/resources", function(req, res) {
       res.render("resources");
-    });
+  });
 
 
   //Serve home handlebars page & required data
@@ -28,6 +28,7 @@ module.exports = function(app) {
       ['id', 'DESC']],
       include: [db.User]
     }).then(function(data) {
+
       let username = "";
       let uid =0;
       if (req.user){
@@ -35,6 +36,7 @@ module.exports = function(app) {
         uid = req.user.id;
         console.log(username)
       }
+
       let arr = [];
       data.forEach(e => {
         //console.log(e.dataValues);
@@ -45,7 +47,10 @@ module.exports = function(app) {
           description: e.dataValues.description,
           userName: e.dataValues.User.userName,
           userId: e.dataValues.UserId,
-          isAuthor: e.dataValues.UserId==uid
+          whaleType: e.dataValues.whaleType,
+          isAuthor: e.dataValues.UserId==uid,                  
+          lat: e.dataValues.lat,
+          lng: e.dataValues.lng
         })
       });
       

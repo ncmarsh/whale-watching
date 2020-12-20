@@ -3,6 +3,9 @@ const passport = require("../config/passport");
 const AWS = require('aws-sdk');
 const multer = require("multer");
 
+const mbxGeocodig = require('@mapbox/mapbox-sdk/services/geocoding')
+const mapToken = process.env.MAPBOX_TOKEN;
+const geoCoder = mbxGeocodig({accessToken: mapToken});
 
 module.exports = function(app) {
   var storage = multer.memoryStorage();
@@ -11,7 +14,8 @@ module.exports = function(app) {
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
     console.log("Making new post! ", req.body);
-    db.Sighting.create(
+    console.log(req.body)
+    db.Sighting.create(      
       req.body
     ).then(function(data) {
       res.json(data);
@@ -75,7 +79,9 @@ module.exports = function(app) {
     if (!req.user) {
       res.json({});
     } else {
-      res.json({
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({        
         email: req.user.email,
         id: req.user.id
       });
