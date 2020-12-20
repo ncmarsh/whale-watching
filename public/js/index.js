@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+    /// Future code for filtering
     $("#select-city").on("click", function(event) {
         let city = $("#city").val().trim();
         window.location.replace("/sightings/city/"+city);
@@ -9,6 +9,8 @@ $(document).ready(function() {
         let city = $("#city").val().trim();
         let whale = $("#whale").val().trim();
         let filters = {city:city, whaleTyoe:whale};
+        /// will not work that way
+        /// shoukd be reload location filter/city/whale
         $.get("/sightings/filter",filters).then(function(data){});
     });
 
@@ -23,21 +25,80 @@ $(document).ready(function() {
      *          on submit button call POST (/api/sightings)
      *          then go to /sightings
      */
-    $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
-    
-    function handlePostCreate() {
-        $.get("/api/user_data").then(function(data) {
-            if (!data){
-                ///show instead of form error message
-                
+   // $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
+    $("#submit-post-btn").on("click",handlePostCreate);
+    $("button.delete").on("click",handlePostDelete);
+    $("button.update").on("click",handlePostUpdate);
+    function handlePostUpdate(event){
+        let postId = $(this).attr("data-id");
+        let userId = parseInt( $(this).attr("data-userid"));
+        console.log(postId, userId);
+        $.get("/api/user_data").then(function(data){
+            console.log(data.id);
+            if (userId === data.id){
+                //postUpdate(postId);
+                UIkit.notification({
+                    message: 'This is your post!',
+                    status: 'success',
+                    pos: 'top-center',
+                    timeout: 2000
+                });
             }
             else{
+                //alert("this is not your post !!!!");
+                UIkit.notification({
+                    message: 'This is not your post!',
+                    status: 'danger',
+                    pos: 'top-center',
+                    timeout: 2000
+                });
+            }
+        })
+    }
+
+    function handlePostDelete(event){
+        let postId = $(this).attr("data-id");
+        let userId = parseInt( $(this).attr("data-userid"));
+        console.log(postId, userId);
+        $.get("/api/user_data").then(function(data){
+            console.log(data.id);
+            if (userId === data.id){
+                deletePost(postId);
+            }
+            else{
+                //alert("this is not your post !!!!");
+                UIkit.notification({
+                    message: 'This is not your post!',
+                    status: 'danger',
+                    pos: 'top-center',
+                    timeout: 2000
+                });
+            }
+        })
+    }
+
+    function handlePostCreate(event) {
+        event.preventDefault();
+        $.get("/api/user_data").then(function(data) {
+            //console.log(data);
+            //console.log(!data);
+            ///console.log(data ==={});
+            ///console.log(JSON.stringify(data)==='{}');
+            if (JSON.stringify(data)==='{}'){
+                ///show instead of form error message
+                let npEl = $("#new-post");
+                let html = `<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+                <h2 class="uk-modal-title">You not logged</h2> </div>`;
+                npEl.html(html);
+            }
+            else{
+                console.log('data'+JSON.stringify(data));
                 let userId = data.id   
-                let city = $("#new-city").val();
-                let specificLocation = $("#specificLocation").val().trim();
-                let description = $("#description").val().trim();
+                let city = $("#new-post-city").val();
+                let specificLocation = city;
+                let description = $("#new-post-description").val().trim();
                 ///data from form maybe changed depend of form
-                new_sighting = {
+                let new_sighting = {
                     UserId: userId,
                     city: city,
                     specificLocation: specificLocation,
@@ -101,6 +162,16 @@ $(document).ready(function() {
         })
           .then(function() {
             window.location.reload();
+          })
+          .catch(function(err) {
+            //alert("something went wrong, try again");
+            UIkit.notification({
+              message: 'Not your post anyway!',
+              status: 'danger',
+              pos: 'top-center',
+              timeout: 2000
+          });
+            console.log(err);
           });
       }
 

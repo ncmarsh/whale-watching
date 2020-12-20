@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     /**
      * check if users?
@@ -15,23 +16,24 @@ $(document).ready(function() {
      * })
      */
     $.get("/api/user_data").then(function(data){
-        if(!data){
+        if(JSON.stringify(data)==='{}'){
             /// show login sign up
-            $("#login-link").show();
-            $("#signup-link").show();
-            $("#logout-link").hide();
-            $("#acc-link").hide()
+            $("#login").show();
+            $("#signup").show();
+            // hide manage acc, logout
+            $("#logout").hide();
+            $("#manage").hide()
         }
         else{
             ///hide login signup 
-            $("#login-link").hide();
-            $("#signup-link").hide();
+            $("#login").hide();
+            $("#signup").hide();
             // show logout 
-            $("#logout-link").show();
-            $("#acc-link").show()
+            $("#logout").show();
+            $("#manage").show()
             // and name
-            let fullName = data.firstName + ' '+data.lastName;
-            console.log(fullName);
+            //let fullName = data.firstName + ' '+data.lastName;
+            //console.log(fullName);
         }
     })
 });

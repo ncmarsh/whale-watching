@@ -58,17 +58,33 @@ module.exports = function(app) {
 
   // DELETE route for deleting sightings.
   app.delete("/api/sightings/:id", function(req, res) {
-    db.Sighting.destroy({
+    db.Sighting.findAll({
       where: {
         id: req.params.id
       }
-    }).then(function(data) {
-      res.json(data);
-    })
+  }).then(function(data){
+    userId =  data[0].dataValues.UserId;
+    console.log(data);
+    if (userId ===req.user.id){
+      db.Sighting.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(data) {
+        res.json(data);
+      })
+    }
+    else{
+      console.log(userId);
+      console.log(req.user.id);
+      res.status(401).json(data);
+    }
   });
+})
 
   //POST route for loggin in a known user
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    console.log("Trying to login!!!!");
     res.json(req.user);
   });
 
@@ -102,6 +118,7 @@ module.exports = function(app) {
       res.redirect(307, "/api/login");
     })
     .catch(function(err) {
+      console.log(err);
       res.status(401).json(err);
     });
   });
