@@ -47,6 +47,7 @@ module.exports = function(app) {
           description: e.dataValues.description,
           userName: e.dataValues.User.userName,
           userId: e.dataValues.UserId,
+          whaleType: e.dataValues.whaleType,
           isAuthor: e.dataValues.UserId==uid,                  
           lat: e.dataValues.lat,
           lng: e.dataValues.lng

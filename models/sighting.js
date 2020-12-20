@@ -4,10 +4,10 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false
       },
-      // specificLocation: {        
-      //     type: DataTypes.STRING,
-      //           allowNull: false
-      // },
+      specificLocation: {        
+          type: DataTypes.STRING,
+                allowNull: false
+      },
       whaleType: {
         type: DataTypes.STRING
       }, 

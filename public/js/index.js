@@ -100,12 +100,14 @@ $(document).ready(function() {
                 let userId = data.id   
                 let city = $("#new-post-city").val();
                 let specificLocation = city;
+                let whaleType = $("#new-post-whale").val();
 
                 let description = $("#new-post-description").val().trim();
                 ///data from form maybe changed depend of form
                 let new_sighting = {
                     UserId: userId,
                     city: city,
+                    whaleType: whaleType,
                     specificLocation: specificLocation,
                     description: description,
                     lng: window.mapLocation.lng,
