@@ -1,6 +1,5 @@
 const db = require("../models");
 const passport = require("../config/passport");
-<<<<<<< HEAD
 const AWS = require('aws-sdk');
 const multer = require("multer");
 
@@ -11,10 +10,6 @@ const multer = require("multer");
 module.exports = function(app) {
   var storage = multer.memoryStorage();
   var upload = multer({ storage: storage });
-=======
-
-module.exports = function(app) {
->>>>>>> Develop
 
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
@@ -24,11 +19,7 @@ module.exports = function(app) {
       req.body
     ).then(function(data) {
       res.json(data);
-<<<<<<< HEAD
       // fetchSubscribers(data); //SNS Notification system. Hushed for dev.
-=======
-      // fetchSubscribers(data); //TODO uncomment when deployed final
->>>>>>> Develop
     })
   });
 
