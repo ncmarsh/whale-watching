@@ -27,6 +27,13 @@ module.exports = function(app) {
     db.Sighting.findAll({
       include: [db.User]
     }).then(function(data) {
+      let username = "";
+      let uid =0;
+      if (req.user){
+        username = req.user.userName;
+        uid = req.user.id;
+        console.log(username)
+      }
       let arr = [];
       data.forEach(e => {
         //console.log(e.dataValues);
@@ -36,11 +43,14 @@ module.exports = function(app) {
           city: e.dataValues.city,
           description: e.dataValues.description,
           userName: e.dataValues.User.userName,
-          userId: e.dataValues.UserId
+          userId: e.dataValues.UserId,
+          isAuthor: e.dataValues.UserId==uid
         })
       });
+      
       let hbsObject = {
-        sighting: arr
+        sighting: arr,
+        username: username
       }
       res.render("sightings", hbsObject);
     });
