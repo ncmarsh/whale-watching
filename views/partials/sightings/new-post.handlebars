@@ -1,4 +1,5 @@
 <!-- Form to add new sighting post -->
+
 {{#if username}}
     <div id="new-post" class="uk-flex-top uk-modal-container" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
@@ -45,7 +46,8 @@
                     <textarea id="new-post-description" class="uk-textarea" placeholder="Description of the event"></textarea>
                 </div>
                 <div class="uk-margin">Click on the specific location you saw the whale
-                    <div id='map' style='width: 400px; height: 300px;'></div>
+                    <div id='map' style='width: 520px; height: 300px;'></div>
+                    <pre id="coordinates" class="coordinates"></pre>
                 </div>
             </form>
             <div class="uk-modal-footer uk-text-right">
@@ -60,27 +62,9 @@
             <h2 class="uk-modal-title">Please log in and try again.</h2> 
         </div>
     </div>
-{{/if}}
 
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lybWFkIiwiYSI6ImNraXFnNGFiNjFjaWIzOG84aGpvd2xtOGIifQ.7CC9ym81Xt2gfUcxbB2Lkg';
-    let map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-122.4, 47.6], // starting position
-        zoom: 9 // starting zoom
-    });
+{{/if}}      
 
-    map.on('click', function (e) {
-        console.log(e.lngLat.wrap().lat)
-        console.log(e.lngLat.wrap().lng)
-        document.getElementById('info').innerHTML =
-        // e.point is the x, y coordinates of the mousemove event relative
-        // to the top-left corner of the map
-        JSON.stringify(e.point) +
-        '<br />' +
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat.wrap());
-    });
-</script> 
+<script src="/js/map.js"></script>      
+
 

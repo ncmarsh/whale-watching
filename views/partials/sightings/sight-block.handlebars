@@ -1,9 +1,9 @@
+
 {{!-- Historical sightings post --}}
 <div class="sighting-post uk-card uk-card-default uk-card-hover uk-child-width-expand">
     <div class="uk-card-header">
         <h3 class="uk-card-title">
-            Orcas
-            {{ whale-type }}
+            {{ whaleType }}
         </h3>
     </div>
     <div class="sight-card-body uk-card-body">
@@ -19,6 +19,26 @@
             <li class="sight-list">
                 <h4>Sighting: </h4>
                 <p>{{ description }}</p>
+            </li>
+            <li class="sight-list">
+                <h4>Location on map: </h4>
+                <div id="dispMap{{lat}}{{lng}}" style="height: 300px; width: 100%"></div>
+                <script>            
+                    var lnglatArr = [{{ lng }}, {{ lat }}]; 
+                    console.log('latlongARRay', lnglatArr)
+
+                    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lybWFkIiwiYSI6ImNraXFnNGFiNjFjaWIzOG84aGpvd2xtOGIifQ.7CC9ym81Xt2gfUcxbB2Lkg';
+                    var dispMap = new mapboxgl.Map({
+                        container: "dispMap{{lat}}{{lng}}",
+                        style: 'mapbox://styles/mapbox/streets-v11',
+                        center: lnglatArr,
+                        zoom: 9
+                    });
+
+                    var marker = new mapboxgl.Marker()
+                    .setLngLat(lnglatArr)
+                    .addTo(dispMap);       
+                </script>
             </li>
         </ul>
     </div>
