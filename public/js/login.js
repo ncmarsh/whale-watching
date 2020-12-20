@@ -26,7 +26,7 @@ $(document).ready(function() {
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(userName, password) {
         //console.log(userName,password,'api/login');
-        console.log(userName,password);
+        //console.log(userName,password);
       $.post("/api/login", {
         userName: userName,
         password: password
@@ -36,7 +36,13 @@ $(document).ready(function() {
           // If there's an error, log the error
         })
        .catch(function(err) {
-          alert("something went wrong, try again");
+          //alert("something went wrong, try again");
+          UIkit.notification({
+            message: 'Check your username/password!',
+            status: 'danger',
+            pos: 'top-center',
+            timeout: 2000
+        });
           console.log(err);
         });
     }

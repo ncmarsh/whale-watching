@@ -64,7 +64,13 @@ $(document).ready(function() {
     }
   
     function handleLoginErr(err) {
-      alert('Something went wrong, try again please');
+      //alert('Something went wrong, try again please');
+      UIkit.notification({
+        message: 'Something went wrong, try again please',
+        status: 'danger',
+        pos: 'top-center',
+        timeout: 2000
+    });
     }
   });
   
