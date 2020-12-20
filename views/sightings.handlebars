@@ -1,47 +1,58 @@
 <!-- Nav bar -->
-<nav class="uk-navbar-container" uk-navbar>
-    <!-- Lefthand links -->
-    <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-            <li class="uk-parent"><a href="/">Home</a></li>
-            <li class="uk-active"><a href="/sightings">Historical Sightings</a></li>
-            <li class="uk-parent"><a href="/resources">Find Out More</a></li>
-        </ul>
-    </div>
-    <!-- Center logo -->
-    <div class="uk-navbar-center">
-        <a href="/" class="uk-navbar-item uk-logo">PNW Whales</a>
-    </div>
-    <!-- Righthand links -->
-    <div class="uk-navbar-right">
-        <ul class="uk-breadcrumb">
-            <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
-            <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
-        </ul>
-        <ul class="uk-breadcrumb">
-            <!-- If logged in -->
-            <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
-            <li id="logout" class="uk-parent"><a href="/logout">Log Out</a></li>
-        </ul>
-    </div>
-</nav>
-<h1 class="uk-heading-divider uk-text-center">Historical Sightings
-    <!-- Modal for new sighting post -->
-    <!-- Button toggling the modal -->
-    <button id="add-post-btn" uk-toggle="target: #new-post" class="uk-button uk-button-large" type="button">Add New Sighting</button>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar-container" uk-navbar>
+        <!-- Lefthand menu -->
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-toggle" uk-toggle="target: #menu" uk-navbar-toggle-icon href="#"></a>
+            <div id="menu" uk-offcanvas>
+                <div class="uk-offcanvas-bar">
+                    <button class="uk-offcanvas-close" type="button" uk-close></button>
+                    <ul class="uk-nav uk-nav-default">
+                        <li class="uk-parent"><a href="/">Home</a></li>
+                        <li class="uk-active"><a href="/sightings">Historical Sightings</a></li>
+                        <li class="uk-parent"><a href="/resources">Local Resources</a></li>
+                    </ul>               
+                </div>
+            </div>
+        </div>
+        <!-- Center logo -->
+        <div class="uk-navbar-center">
+            {{!-- <a href="/" class="uk-navbar-item uk-logo">PNW Whales</a> --}}
+            <div class="title uk-navbar-item uk-logo">Historical Sightings</div>
+        </div>
+        <!-- Righthand links -->
+        <div class="uk-navbar-right">
+            <ul class="uk-breadcrumb">
+                <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
+                <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
+            </ul>
+            <ul class="uk-breadcrumb">
+                <!-- If logged in -->
+                <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
+                <li id="logout" class="uk-parent"><a href="/logout">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
-    {{> sightings/new-post}}
-</h1>
+<div class="wallpaper">
+    {{!-- <h1 class="page-header uk-text-center">
+        <span class="header-text">Historical Sightings</span> --}}
+        <!-- Modal for new sighting post -->
+        <!-- Button toggling the modal -->
+        <button id="add-post-btn" uk-toggle="target: #new-post" class="uk-button uk-button-large" type="button">Add New Sighting</button>
 
-{{> modals/login-block}}
-{{> modals/signup-block}}
+        {{> sightings/new-post}}
+    {{!-- </h1> --}}
+    {{!-- <hr class="uk-divider-icon"> --}}
 
-<!-- drop down here for filters -->
-{{!-- Sightings list --}}
-<div class="uk-container">
-    <ul class="uk=list uk-list-striped">
+    {{> modals/login-block}}
+    {{> modals/signup-block}}
+
+    {{!-- Sightings list --}}
+    <div class="uk-container uk-grid-row-large">
         {{#each sighting}}
             {{> sightings/sight-block}}
         {{/each}}
-    </ul>
+    </div>
 </div>

@@ -1,30 +1,39 @@
 <!-- Nav bar -->
-<nav class="uk-navbar-container" uk-navbar>
-    <!-- Lefthand links -->
-    <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-            <li class="uk-active"><a href="/">Home</a></li>
-            <li class="uk-parent"><a href="/sightings">Historical Sightings</a></li>
-            <li class="uk-parent"><a href="/resources">Find Out More</a></li>
-        </ul>
-    </div>
-    <!-- Center logo -->
-    <div class="uk-navbar-center">
-        <a href="/" class="uk-navbar-item uk-logo">PNW Whales</a>
-    </div>
-    <!-- Righthand links -->
-    <div class="uk-navbar-right">
-        <ul class="uk-breadcrumb">
-            <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
-            <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
-        </ul>
-        <ul class="uk-breadcrumb">
-            <!-- If logged in -->
-            <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
-            <li id="logout" class="uk-parent"><a href="/logout">Log Out</a></li>
-        </ul>
-    </div>
-</nav>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar uk-navbar-container" uk-navbar>
+        <!-- Lefthand menu -->
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-toggle" uk-toggle="target: #menu" uk-navbar-toggle-icon href="#"></a>
+            <div id="menu" uk-offcanvas>
+                <div class="uk-offcanvas-bar">
+                    <button class="uk-offcanvas-close" type="button" uk-close></button>
+                    <ul class="uk-nav uk-nav-default">
+                        <li class="uk-active"><a href="/">Home</a></li>
+                        <li class="uk-parent"><a href="/sightings">Historical Sightings</a></li>
+                        <li class="uk-parent"><a href="/resources">Local Resources</a></li>
+                    </ul>               
+                </div>
+            </div>
+        </div>
+        <!-- Center logo -->
+        <div class="uk-navbar-center">
+            {{!-- <a href="/" class="uk-navbar-item uk-logo">PNW Whales</a> --}}
+            <div class="title uk-navbar-item uk-logo">Welcome {{ username }}!</div>
+        </div>
+        <!-- Righthand links -->
+        <div class="uk-navbar-right">
+            <ul class="uk-breadcrumb">
+                <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
+                <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
+            </ul>
+            <ul class="uk-breadcrumb">
+                <!-- If logged in -->
+                <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
+                <li id="logout" class="uk-parent"><a href="/logout">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 {{> modals/login-block}}
 {{> modals/signup-block}}
@@ -33,33 +42,41 @@
 <hr class="uk-divider-icon"> --}}
 
 <div class="uk-cover-container">
-    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: false; autoplay: true; autoplay-interval: 4000">
-        <ul class="uk-slideshow-items" uk-height-viewport="expand: true; min-height: 500">
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="min-height: 300; max-height: 600; animation: fade; ratio: 1600:1200; autoplay: true; autoplay-interval: 4000">
+        <ul class="uk-slideshow-items">
             <li>
-                <img src="/images/background/orcas-bk.jpg" alt="Orcas">
+                <img class="ss-pic" src="https://images.pexels.com/photos/289324/pexels-photo-289324.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Orcas">
             </li>
             <li>
-                <img src="/images/background/gray-whale-bk.jpg" alt="Gray whale">
+                <img class="ss-pic" src="https://images.pexels.com/photos/3329230/pexels-photo-3329230.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Gray whale">
             </li>
             <li>
-                <img src="/images/background/orca-fam-bk.jpg" alt="Orca family">
+                <img class="ss-pic" src="https://images.pexels.com/photos/3695720/pexels-photo-3695720.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Orca family">
             </li>
             <li>
-                <img src="/images/background/humpback-bk.jpeg" alt="Humpback whales">
+                <img class="ss-pic" src="https://images.pexels.com/photos/51964/humpback-whale-natural-spectacle-nature-mammal-51964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Humpback whales">
             </li>
             <li>
-                <img src="/images/background/orca-water-bk.jpg" alt="Orca surfacing">
+                <img class="ss-pic" src="https://images.pexels.com/photos/3309865/pexels-photo-3309865.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Orca surfacing">
             </li>
         </ul>
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        <div class="uk-position-bottom-center uk-position-small">
+            <ul class="uk-dotnav">
+                <li uk-slideshow-item="0"><a href="#">Item 1</a></li>
+                <li uk-slideshow-item="1"><a href="#">Item 2</a></li>
+                <li uk-slideshow-item="2"><a href="#">Item 3</a></li>
+                <li uk-slideshow-item="3"><a href="#">Item 4</a></li>
+                <li uk-slideshow-item="4"><a href="#">Item 5</a></li>
+            </ul>
+        </div>
     </div>
 </div>
+{{!-- <hr class="uk-divider-icon"> --}}
 <div uk-grid>
-    <div class="uk-card uk-card-hover uk-card-body uk-card-small uk-card-secondary uk-width-1-2">
+    <div class="uk-card uk-card-hover uk-card-body uk-card-small uk-card-secondary uk-width-1-2@s uk-text-center">
         <h3 class="uk-card-title"><a href="/resources">Find Out More</a></h3>
     </div>
-    <div class="uk-card uk-card-hover uk-card-body uk-card-secondary uk-width-1-2">
-        <h3 class="uk-card-title"><a href="/sightings">View Historical Sightings</a></h3>
+    <div class="uk-card uk-card-hover uk-card-body uk-card-small uk-card-secondary uk-width-1-2@s uk-text-center">
+        <h3 class="uk-card-title"><a href="/sightings">View Local Sightings</a></h3>
     </div>
 </div>

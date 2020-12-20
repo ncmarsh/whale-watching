@@ -1,16 +1,97 @@
-/* Sightings Page */
-/* Position the add new sighting post button */
-#add-post-btn {
-    position: absolute;
-    right: 20px;
+/* Navbar title */
+.title {
+    font-weight: bold;
+    font-size: 2.5rem;
 }
 
-/* Resources Page */
-/* Size and position of logos */
-.logo-img {
+/* Welcome page */
+/* Slide show images */
+.ss-pic {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: auto;
-    height: 100%;
+}
+
+/* Background for other pages */
+/* Background */
+div.wallpaper {
+    background-image: url(https://images.pexels.com/photos/3325908/pexels-photo-3325908.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Sightings Page */
+/* Position the add new sighting post button */
+#add-post-btn {
+    margin-top: 1rem;
+    margin-left: 80%;
+    position: fixed;
+} 
+
+/* Sighting post cards*/
+.sighting-post {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 50%;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #bbbbbb;
+}
+
+.sight-card-body {
+    padding: 0.5rem;
+}
+
+li.sight-list {
+    list-style-type: none;
+}
+
+.edit-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
+}
+
+button.user-edit {
+    border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Resources Page */
+/* Full resource card */
+.resource-card {
+    margin-top: 1.5rem;
+    margin-left: 9rem;
+    margin-right: 3rem;
+    width: 80%;
+}
+
+/* Size and position of logos */
+.logo-div {
+    display: block;
+    margin: 1rem;
+    max-width: 300px;
+    max-height: 250px;
+    padding: 0;
+}
+
+.logo-img {
+    display: block;
+    min-width: 160px;
+    max-width: 300px;
+    min-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uk-card-media-left {
+    width: 100px;
+}
+
+.link {
+    color: #000000;
 }
