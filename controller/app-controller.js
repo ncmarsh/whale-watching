@@ -24,7 +24,8 @@ module.exports = function(app) {
   //   });
   // });
   app.get("/sightings", function(req, res) {
-    db.Sighting.findAll({
+    db.Sighting.findAll({order: [
+      ['id', 'DESC']],
       include: [db.User]
     }).then(function(data) {
       let username = "";
