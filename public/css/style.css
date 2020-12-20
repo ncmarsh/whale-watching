@@ -29,6 +29,30 @@ div.wallpaper {
     position: fixed;
 } 
 
+/* New post modal - map */
+#map { 
+    position: absolute; 
+    top: 380px; 
+    bottom: 20px; 
+    height: 200px; 
+    width: 100%; 
+    clear: both 
+}
+
+#info {
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: #222;
+    background: #fff;
+}
+
 /* Sighting post cards*/
 .sighting-post {
     margin-left: 25%;
