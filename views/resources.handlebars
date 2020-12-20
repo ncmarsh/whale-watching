@@ -6,7 +6,6 @@
             <li class="uk-parent"><a href="/">Home</a></li>
             <li class="uk-parent"><a href="/sightings">Historical Sightings</a></li>
             <li class="uk-active"><a href="/resources">Find Out More</a></li>
-            <li><a href=""></a></li>
         </ul>
     </div>
     <!-- Center logo -->
@@ -16,11 +15,112 @@
     <!-- Righthand links -->
     <div class="uk-navbar-right">
         <ul class="uk-breadcrumb">
-            <li class="uk-active"><a href="">Log In</a></li>
-            <li class="uk-active"><a href="">Sign Up</a></li>
+            <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
+            <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
+        </ul>
+        <ul class="uk-breadcrumb">
             <!-- If logged in -->
-            <li class="uk-parent"><a href="">Manage Account</a></li>
-            <li class="uk-parent"><a href="">Log Out</a></li>
+            <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
+            <li id="logout" class="uk-parent"><a href="/logout">Log Out</a></li>
         </ul>
     </div>
 </nav>
+
+{{> modals/login-block}}
+{{> modals/signup-block}}
+
+<h1 class="uk-text-center">Local Resources</h1>
+<hr class="uk-divider-icon">
+<div class="uk-container" uk-grid>
+    {{!-- Whale Museum --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Whale Museum, Friday Harbor</h3>
+                <p>Lorem ipsum <a href="https://whalemuseum.org/collections/adopt-an-orca">Adopt an orca</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="https://whalemuseum.org/">Whale Museum</a>
+            </div>
+        </div>
+    </div>
+    {{!-- Orca Network --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/orca-network-logo.jpg" alt="Orca Network Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Orca Network</h3>
+                <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="http://www.orcanetwork.org/Main/">Orca Network</a>
+            </div>
+        </div>
+    </div>
+    {{!-- The Whale Trail --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/whale-trail-logo.jpg" alt="The Whale Trail Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">The Whale Trail</h3>
+                <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="https://thewhaletrail.org/">The Whale Trail</a>
+            </div>
+        </div>
+    </div>
+    {{!-- Be Whale Wise --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/be-whale-wise-logo.png" alt="Be Whale Wise Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Be Whale Wise</h3>
+                <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="https://www.bewhalewise.org/">Be Whale Wise</a>
+            </div>
+        </div>
+    </div>
+    {{!-- Center for Whale Research --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/center-whale-research-logo.jpeg" alt="Center for Whale Research Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Center for Whale Research, Friday Harbor</h3>
+                <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="https://www.whaleresearch.com/">Center for Whale Research, Friday Harbor</a>
+            </div>
+        </div>
+    </div>
+    {{!-- WA Dept of Fish and Wildlife --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/fish-wildlife-logo.jpg" alt="WA Deparment of Fish and Wildlife Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Washington Department of Fish and Wildlife - Orca Conservation</h3>
+                <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/orca">Orca Conservation</a>
+            </div>
+        </div>
+    </div>
+    {{!-- WA State Dept of Ecology --}}
+    <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img class="logo-img" src="/images/logos/dept-ecology-logo.png" alt="Department of Ecology WA State Logo">
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Department of Ecology, Washington State - Orca Task Force</h3>
+                <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="https://ecology.wa.gov/Water-Shorelines/Puget-Sound/Orca-task-force">Orca Task Force</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,29 +4,54 @@ const db = require("../models");
 module.exports = function(app) {
   //Serve home handlebars page & required data
   app.get("/", function(req, res) {
-
-    let hbsObject = {
-      data: null //any data needed for page?
-    };
-      res.render("index", hbsObject);
+    res.render("index");
 
   });
 
   //Serve Resources handlebars page
   app.get("/resources", function(req, res) {
-    let hbsObject = {
-      data: null //any data needed for page?
-    };
-      res.render("resources", hbsObject);
-    });
+      res.render("resources");
+  });
+
 
   //Serve home handlebars page & required data
+  // app.get("/sightings", function(req, res) {
+  //   db.Sighting.findAll({}).then(function(data) {
+  //     let hbsObject = {
+  //       data: data 
+  //     };
+  //     res.render("sightings", hbsObject);
+  //   });
+  // });
   app.get("/sightings", function(req, res) {
-    db.Sighting.findAll({}).then(function(data) {
-      console.log(data)
+    db.Sighting.findAll({order: [
+      ['id', 'DESC']],
+      include: [db.User]
+    }).then(function(data) {
+      let username = "";
+      let uid =0;
+      if (req.user){
+        username = req.user.userName;
+        uid = req.user.id;
+        console.log(username)
+      }
+      let arr = [];
+      data.forEach(e => {
+        arr.push({
+          id : e.dataValues.id,
+          createdAt: e.dataValues.createdAt,
+          city: e.dataValues.city,
+          description: e.dataValues.description,
+          userName: e.dataValues.User.userName,
+          userId: e.dataValues.UserId,          
+          lat: e.dataValues.lat,
+          lng: e.dataValues.lng,
+          isAuthor: e.dataValues.UserId==uid
+        })
+      });
       let hbsObject = {
-        sighting: data 
-      };
+        sighting: arr
+      }
       res.render("sightings", hbsObject);
     });
   });
@@ -54,6 +79,4 @@ module.exports = function(app) {
       res.render("sightings", hbsObject);
     })
   });
-
-
 }
