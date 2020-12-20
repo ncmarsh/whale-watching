@@ -28,6 +28,33 @@ $(document).ready(function() {
    // $("#submit-post-btn").on("click",handlePostCreateWithoutLogging);
     $("#submit-post-btn").on("click",handlePostCreate);
     $("button.delete").on("click",handlePostDelete);
+    $("button.update").on("click",handlePostUpdate);
+    function handlePostUpdate(event){
+        let postId = $(this).attr("data-id");
+        let userId = parseInt( $(this).attr("data-userid"));
+        console.log(postId, userId);
+        $.get("/api/user_data").then(function(data){
+            console.log(data.id);
+            if (userId === data.id){
+                //postUpdate(postId);
+                UIkit.notification({
+                    message: 'This is your post!',
+                    status: 'success',
+                    pos: 'top-center',
+                    timeout: 2000
+                });
+            }
+            else{
+                //alert("this is not your post !!!!");
+                UIkit.notification({
+                    message: 'This is not your post!',
+                    status: 'danger',
+                    pos: 'top-center',
+                    timeout: 2000
+                });
+            }
+        })
+    }
 
     function handlePostDelete(event){
         let postId = $(this).attr("data-id");
