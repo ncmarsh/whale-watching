@@ -9,14 +9,14 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
                 allowNull: false
       },
-      // lat: {
-      //   type: DataTypes.FLOAT,
-      //   allowNull: false
-      // },
-      // lng: {
-      //   type: DataTypes.FLOAT,
-      //   allowNull: false
-      // },
+      lat: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+      },
+      lng: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+      },
       // whaleType: {
       //     type: DataTypes.STRING
       // },      

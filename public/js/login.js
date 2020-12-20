@@ -35,10 +35,10 @@ $(document).ready(function() {
           window.location.replace("/sightings");  ///Change this
           // If there's an error, log the error
         })
-       .catch(function(err) {
-          alert("something went wrong, try again");
-          console.log(err);
-        });
+      //  .catch(function(err) {
+      //     alert("something went wrong, try again");
+      //     console.log(err);
+      //   });
     }
     //test function DELETE
     /* function loginUser2(userName, password) {

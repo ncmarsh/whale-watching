@@ -28,6 +28,12 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+  res.locals.user = req.user; // This is the important line
+
+  next();
+});
+
 
 require("./controller/app-controller.js")(app)
 require("./controller/api-controller.js")(app)

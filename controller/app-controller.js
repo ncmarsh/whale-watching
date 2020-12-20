@@ -11,7 +11,7 @@ module.exports = function(app) {
   //Serve Resources handlebars page
   app.get("/resources", function(req, res) {
       res.render("resources");
-    });
+  });
 
 
   //Serve home handlebars page & required data
@@ -27,6 +27,7 @@ module.exports = function(app) {
     db.Sighting.findAll({
       include: [db.User]
     }).then(function(data) {
+      console.log(data)
       let arr = [];
       data.forEach(e => {
         arr.push({
@@ -34,7 +35,9 @@ module.exports = function(app) {
           city: e.dataValues.city,
           description: e.dataValues.description,
           userName: e.dataValues.User.userName,
-          userId: e.dataValues.UserId
+          userId: e.dataValues.UserId,          
+          lat: e.dataValues.lat,
+          lng: e.dataValues.lng
         })
       });
       let hbsObject = {

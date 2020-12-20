@@ -1,6 +1,27 @@
+
 <li>
-    {{createdAt}}
-    {{city}}
-    {{description}}
-    {{userName}}
+    <p>Posted at: {{createdAt }}</p>
+    <p>Nearest City: {{city }}</p>
+    <p>Description : {{description }}</p>
+    <p>Posted By: {{ userName }}</p>
+    <div id="dispMap" style="height: 300px; width: 100%"></div>
 </li>
+    
+    <script>
+        var lnglatArr = [{{ lng }}, {{ lat }}];
+        
+        console.log('latlongARRay', lnglatArr)
+        
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lybWFkIiwiYSI6ImNraXFnNGFiNjFjaWIzOG84aGpvd2xtOGIifQ.7CC9ym81Xt2gfUcxbB2Lkg';
+        var dispMap = new mapboxgl.Map({
+            container: 'dispMap',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: lnglatArr,
+            zoom: 9
+        });
+    
+        var marker = new mapboxgl.Marker()
+        .setLngLat(lnglatArr)
+        .addTo(dispMap);
+    </script>
+
