@@ -35,16 +35,17 @@ $(document).ready(function() {
           window.location.replace("/sightings");  ///Change this
           // If there's an error, log the error
         })
-       .catch(function(err) {
-          //alert("something went wrong, try again");
-          UIkit.notification({
-            message: 'Check your username/password!',
-            status: 'danger',
-            pos: 'top-center',
-            timeout: 2000
-        });
-          console.log(err);
-        });
+
+      //  .catch(function(err) {
+      //     //alert("something went wrong, try again");
+      //     UIkit.notification({
+      //       message: 'Check your username/password!',
+      //       status: 'danger',
+      //       pos: 'top-center',
+      //       timeout: 2000
+      //   });
+      //     console.log(err);
+      //   });
     }
     //test function DELETE
     /* function loginUser2(userName, password) {
