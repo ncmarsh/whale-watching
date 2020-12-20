@@ -46,14 +46,10 @@ module.exports = function(app) {
           city: e.dataValues.city,
           description: e.dataValues.description,
           userName: e.dataValues.User.userName,
-
           userId: e.dataValues.UserId,
-          isAuthor: e.dataValues.UserId==uid
-
-                  
+          isAuthor: e.dataValues.UserId==uid,                  
           lat: e.dataValues.lat,
           lng: e.dataValues.lng
-
         })
       });
       
