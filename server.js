@@ -4,12 +4,10 @@ const exphbs = require("express-handlebars");
 const router = express.Router();
 const session = require("express-session");
 
-
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
 const passport = require("./config/passport");
-
 
 const app = express();
 
@@ -34,12 +32,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 require("./controller/app-controller.js")(app)
 require("./controller/api-controller.js")(app)
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });

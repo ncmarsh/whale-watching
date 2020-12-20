@@ -19,10 +19,13 @@
 
 ## Languages and Concepts
 
+- [Sequelize](https://sequelize.org/)
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
+- [Passport.js](http://www.passportjs.org/)
 - [Handlebars.js](https://handlebarsjs.com/)
 - [UIKit](https://getuikit.com/)
+- [Mapbox API](https://docs.mapbox.com/api/overview/)
 
 ## Demo
 
@@ -34,7 +37,7 @@
 
 ## Links
 
-- [See it live!]()
+- [See it live!](http://www.pnwwhalewatch.com/)
 - [Project Repository](https://github.com/watchNW/whale-watching)
 
 ## Contact
