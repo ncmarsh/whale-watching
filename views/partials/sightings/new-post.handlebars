@@ -5,7 +5,6 @@
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
             <h2 class="uk-modal-title">New Whale Sighting</h2>
             <form action="/api/upload" enctype="multipart/form-data" method="POST">
-            <form>
                 <select id="new-post-whale" class="uk-select">
                     <option>Select the type of whale seen</option>
                     <option>Gray Whale</option>
@@ -43,12 +42,13 @@
                 <input type="file" name="sightingImage" accept="image/*" />
                 <div id='map' style='width: 520px; height: 300px;'></div>                 
                 <pre id="coordinates" class="coordinates"></pre>
-                <button id="submit-post-btn" class="uk-button uk-button-default">Submit</button>
+                {{!-- <button id="submit-post-btn" class="uk-button uk-button-default">Submit</button> --}}
+
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <button id="submit-post-btn" class="uk-button uk-button-primary" type="button">Save</button>
+                </div>
             </form>
-            <div class="uk-modal-footer uk-text-right">
-                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                <button id="submit-post-btn" class="uk-button uk-button-primary" type="button">Save</button>
-            </div>
         </div>
     </div>
 {{else}}

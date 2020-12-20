@@ -82,7 +82,7 @@ $(document).ready(function() {
     }
 
     function handlePostCreate(event) {
-        event.preventDefault();
+        // event.preventDefault();
         $.get("/api/user_data").then(function(data) {
             // console.log(data);
             //console.log(!data);
