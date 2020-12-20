@@ -1,8 +1,5 @@
 const db = require("../models");
 const passport = require("../config/passport");
-const mbxGeocodig = require('@mapbox/mapbox-sdk/services/geocoding')
-const mapToken = process.env.MAPBOX_TOKEN;
-const geoCoder = mbxGeocodig({accessToken: mapToken});
 
 module.exports = function(app) {
 

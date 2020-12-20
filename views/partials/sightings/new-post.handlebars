@@ -1,5 +1,4 @@
 <!-- Form to add new sighting post -->
-
 {{#if username}}
     <div id="new-post" class="uk-flex-top uk-modal-container" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
@@ -45,7 +44,7 @@
                 <div class="uk-margin">
                     <textarea id="new-post-description" class="uk-textarea" placeholder="Description of the event"></textarea>
                 </div>
-                <div class="uk-margin">Click on the specific location you saw the whale
+                <div class="uk-margin">Drag the pin to the specific location you saw the whale
                     <div id='map' style='width: 520px; height: 300px;'></div>
                     <pre id="coordinates" class="coordinates"></pre>
                 </div>
@@ -62,7 +61,6 @@
             <h2 class="uk-modal-title">Please log in and try again.</h2> 
         </div>
     </div>
-
 {{/if}}      
 
 <script src="/js/map.js"></script>      
