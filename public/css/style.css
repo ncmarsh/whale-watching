@@ -4,6 +4,11 @@
     font-size: 2.5rem;
 }
 
+/* Navbar menu titles */
+.nav-title {
+    font-size: 1rem;
+}
+
 /* Welcome page */
 /* Slide show images */
 .ss-pic {
@@ -28,6 +33,21 @@ div.wallpaper {
     margin-left: 80%;
     position: fixed;
 } 
+
+/* Draggable map marker */
+.coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+}
 
 /* Sighting post cards*/
 .sighting-post {
@@ -68,6 +88,7 @@ button.user-edit {
     margin-left: 9rem;
     margin-right: 3rem;
     width: 80%;
+    opacity: 85%;
 }
 
 /* Size and position of logos */

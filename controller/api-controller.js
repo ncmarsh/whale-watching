@@ -3,7 +3,6 @@ const passport = require("../config/passport");
 const AWS = require('aws-sdk');
 const multer = require("multer");
 
-
 module.exports = function(app) {
   var storage = multer.memoryStorage();
   var upload = multer({ storage: storage });
@@ -11,11 +10,12 @@ module.exports = function(app) {
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
     console.log("Making new post! ", req.body);
-    db.Sighting.create(
+    console.log(req.body)
+    db.Sighting.create(      
       req.body
     ).then(function(data) {
       res.json(data);
-      fetchSubscribers(data);
+      // fetchSubscribers(data); //TODO uncomment when deployed final
     })
   });
 
@@ -73,12 +73,9 @@ module.exports = function(app) {
   // GET route for all user data
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
-      // The user is not logged in, send back an empty object
       res.json({});
     } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
+      res.json({        
         email: req.user.email,
         id: req.user.id
       });
