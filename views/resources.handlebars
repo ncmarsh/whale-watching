@@ -3,7 +3,7 @@
     <!-- Lefthand links -->
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-            <li class="uk-parent"><a href="/">Home</a></li>
+            <li class="uk-parent"><a href="/"><span uk-icon="home"></span></a></li>
             <li class="uk-parent"><a href="/sightings">Historical Sightings</a></li>
             <li class="uk-active"><a href="/resources">Find Out More</a></li>
         </ul>
@@ -15,11 +15,13 @@
     <!-- Righthand links -->
     <div class="uk-navbar-right">
         <ul class="uk-breadcrumb">
-            <li class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
-            <li class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
+            <li id="login" class="uk-active"><a href="#login-modal" uk-toggle>Log In</a></li>
+            <li id="signup" class="uk-active"><a href="#signup-modal" uk-toggle>Sign Up</a></li>
+        </ul>
+        <ul class="uk-breadcrumb">
             <!-- If logged in -->
-            <li class="uk-parent"><a href="">Manage Account</a></li>
-            <li class="uk-parent"><a href="">Log Out</a></li>
+            <li id="manage" class="uk-parent"><a href="">Manage Account</a></li>
+            <li id="logout" class="uk-parent"><a href="/logout">Log Out</a></li>
         </ul>
     </div>
 </nav>
@@ -29,12 +31,11 @@
 
 <h1 class="uk-text-center">Local Resources</h1>
 <hr class="uk-divider-icon">
-<div class="uk-container">
+<div class="uk-container" uk-grid>
     {{!-- Whale Museum --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo">
         </div>
         <div>
             <div class="uk-card-body">
@@ -47,8 +48,7 @@
     {{!-- Orca Network --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/whale-museum-logo.jpg" alt="Whale Museum Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/orca-network-logo.jpg" alt="Orca Network Logo">
         </div>
         <div>
             <div class="uk-card-body">
@@ -61,8 +61,7 @@
     {{!-- The Whale Trail --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/whale-trail-logo.jpg" alt="The Whale Trail Logo">
         </div>
         <div>
             <div class="uk-card-body">
@@ -75,8 +74,7 @@
     {{!-- Be Whale Wise --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/be-whale-wise-logo.png" alt="Be Whale Wise Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/be-whale-wise-logo.png" alt="Be Whale Wise Logo">
         </div>
         <div>
             <div class="uk-card-body">
@@ -89,8 +87,7 @@
     {{!-- Center for Whale Research --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/center-whale-research-logo.jpeg" alt="Center for Whale Research Logo">
         </div>
         <div>
             <div class="uk-card-body">
@@ -103,8 +100,7 @@
     {{!-- WA Dept of Fish and Wildlife --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/fish-wildlife-logo.jpg" alt="WA Deparment of Fish and Wildlife Logo">
         </div>
         <div>
             <div class="uk-card-body">
@@ -117,8 +113,7 @@
     {{!-- WA State Dept of Ecology --}}
     <div class="uk-card uk-card-default uk-card-hover uk-child-width-1-2" uk-grid>
         <div class="uk-card-media-left uk-cover-container">
-            <img src="/images/logos/wm-logo-sm.png" alt="Whale Museum Logo" uk-cover>
-            <canvas width="200" height="100"></canvas>
+            <img class="logo-img" src="/images/logos/dept-ecology-logo.png" alt="Department of Ecology WA State Logo">
         </div>
         <div>
             <div class="uk-card-body">

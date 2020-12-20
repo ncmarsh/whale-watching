@@ -1,4 +1,75 @@
+/* Welcome page */
+/* Slide show images */
+.ss-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+}
+
+/* Sightings Page */
+/* Background */
+div.wallpaper {
+    background-image: url(https://images.pexels.com/photos/3325908/pexels-photo-3325908.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+/* Page header */
+.page-header {
+    padding-top: 0.75rem;
+}
+
+/* Header text */
+.header-text {
+    color: #ffffff;
+}
+
+/* Position the add new sighting post button */
 #add-post-btn {
     position: absolute;
     right: 20px;
+}
+
+/* Sighting post cards*/
+.sighting-post {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 2rem;
+    width: 50%;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #bbbbbb;
+}
+
+.sight-card-body {
+    padding: 0.5rem;
+}
+
+li.sight-list {
+    list-style-type: none;
+}
+
+.edit-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
+}
+
+button.user-edit {
+    border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Resources Page */
+/* Size and position of logos */
+.logo-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 100%;
 }
