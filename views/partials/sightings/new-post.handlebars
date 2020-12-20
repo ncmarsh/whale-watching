@@ -1,4 +1,5 @@
 <!-- Form to add new sighting post -->
+
 {{#if username}}
     <div id="new-post" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
@@ -36,6 +37,8 @@
                     <option>Other</option>
                 </select>
                 <textarea id="new-post-description" class="uk-textarea"></textarea>
+                <div id='map' style='width: 520px; height: 300px;'></div>
+                <pre id="info"></pre>
                 <button id="submit-post-btn" class="uk-button uk-button-default">Submit</button>
             </form>
             <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -47,4 +50,8 @@
             <h2 class="uk-modal-title">Please log in and try again.</h2> 
         </div>
     </div>
-{{/if}}
+{{/if}}           
+           
+
+<script src="/js/map.js"></script>      
+
