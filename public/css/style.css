@@ -71,15 +71,27 @@ button.user-edit {
 }
 
 /* Size and position of logos */
+.logo-div {
+    display: block;
+    margin: 1rem;
+    max-width: 300px;
+    max-height: 250px;
+    padding: 0;
+}
+
 .logo-img {
     display: block;
-    margin-top: 2rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
-    max-width: 200px;
-    max-height: 175px;
+    min-width: 160px;
+    max-width: 300px;
+    min-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .uk-card-media-left {
     width: 100px;
+}
+
+.link {
+    color: #000000;
 }
