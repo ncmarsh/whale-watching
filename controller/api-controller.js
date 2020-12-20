@@ -129,7 +129,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
       };
 
       //Put update to latest sighting post with picture name and URL Link
-      console.log("Uploaded new file! ", newFileUploaded);
+      console.log("Uploaded new file to AWS S3! file:", newFileUploaded);
       db.Sighting.findAll(
         {
           limit: 1,
@@ -148,6 +148,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
           }
         ).then(function(data) {
           res.json(data);
+          console.log(`Sighting has been updated with data: `, data);
         })
       });
     }
