@@ -7,30 +7,6 @@ const multer = require("multer");
 module.exports = function(app) {
   var storage = multer.memoryStorage();
   var upload = multer({ storage: storage });
-  // GET route for getting all of the sightings
-  // app.get("/api/sightings", function(req, res) {
-  //   db.Sighting.findAll({}).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
-
-  // GET route for getting all of the sightings near a city
-  // app.get("/api/sightings/:location", function(req, res) {
-  //   db.Sighting.findAll({
-  //       city: req.params.city
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
-
-  // GET route for getting all of the sightings for a particular whale
-  // app.get("/api/sightings/:whale", function(req, res) {
-  //   db.Sighting.findAll({
-  //       whaleType: req.params.whaleType
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
 
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
@@ -135,9 +111,6 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
     region: process.env.AWS_S3_REGION
   });
 
-  // console.log(process.env.AWS_S3_ACCESS_KEY_ID);
-  // console.log(process.env.AWS_S3_SECRET_ACCESS_KEY);
-
   //Where you want to store your file
 
   var params = {
@@ -176,10 +149,6 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
       www.PNWWhalewatch.com for details
     `;
 
-    // Testing hardcoded values
-    let nums = ['12064120323'];
-    // notifySubscribers(nums, msg);
-    
     //DB call for list of subscribers
     db.User.findAll({
       where: {
@@ -187,14 +156,9 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
       }
     }).then(function(data) {
       console.log("Users to be notified: ");
-      nums.forEach(element => { //change to data[] from db
-        // try {
-        //   var number = parseInt(element);
-        // } catch (error) {
-        //   console.error(error);
-        // };
-        // notifySubscribers(number, msg);
-        notifySubscribers(element, msg);
+      data.forEach(element => {
+        // console.log(`+1${element.phoneNumber}`, msg);
+        notifySubscribers(`+1${element.phoneNumber}`, msg);
       });
     })
   };
@@ -203,7 +167,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
     //Foreach subscriber, send text;
     let params = {
       Message: msg,
-      PhoneNumber: '+' + num,
+      PhoneNumber: num,
       MessageAttributes: {
           'AWS.SNS.SMS.SenderID': {
               'DataType': 'String',
