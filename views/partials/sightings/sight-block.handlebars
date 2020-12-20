@@ -25,9 +25,8 @@
     <div class="uk-card-footer">
         <div class="edit-buttons uk-button-group uk-text-right">
             <h4>Posted by: {{ userName }}</h4>
-            {{#if req.user }}
-                <button class="user-edit uk-button uk-button-default"><span uk-icon="pencil"></span></button>
-                <button class="user-edit uk-button uk-button-default"><span class="user-edit" uk-icon="trash"></span></button>
+            {{#if isAuthor }}
+                <button class="user-edit uk-button uk-button-default delete" data-id="{{id}}" data-userid="{{userId}}"><span class="user-edit" uk-icon="trash"></span></button>
             {{/if}}
         </div>
     </div>
