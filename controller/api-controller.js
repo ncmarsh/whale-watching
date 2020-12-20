@@ -1,33 +1,12 @@
 const db = require("../models");
 const passport = require("../config/passport");
+const AWS = require('aws-sdk');
+const multer = require("multer");
 
 
 module.exports = function(app) {
-
-  // GET route for getting all of the sightings
-  // app.get("/api/sightings", function(req, res) {
-  //   db.Sighting.findAll({}).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
-
-  // GET route for getting all of the sightings near a city
-  // app.get("/api/sightings/:location", function(req, res) {
-  //   db.Sighting.findAll({
-  //       city: req.params.city
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
-
-  // GET route for getting all of the sightings for a particular whale
-  // app.get("/api/sightings/:whale", function(req, res) {
-  //   db.Sighting.findAll({
-  //       whaleType: req.params.whaleType
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
+  var storage = multer.memoryStorage();
+  var upload = multer({ storage: storage });
 
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
@@ -120,28 +99,67 @@ module.exports = function(app) {
     });
   });
 
+// route to upload a pdf document file
+// In upload.single("file") - the name inside the single-quote is the name of the field that is going to be uploaded.
+app.post("/api/upload", upload.single("file"), function(req, res) {
+  const file = req.file;
+  const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
+
+  let s3bucket = new AWS.S3({
+    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+    region: process.env.AWS_S3_REGION
+  });
+
+  //Where you want to store your file
+
+  var params = {
+    Bucket: process.env.AWS_S3_BUCKET_NAME,
+    Key: file.originalname,
+    Body: file.buffer,
+    ContentType: file.mimetype,
+    ACL: "public-read"
+  };
+
+  s3bucket.upload(params, function(err, data) {
+    if (err) {
+      res.status(500).json({ error: true, Message: err });
+    } else {
+      res.send({ data });
+      var newFileUploaded = {
+        description: req.body.description,
+        fileLink: s3FileURL + file.originalname,
+        s3_key: params.Key
+      };
+      console.log("Uploaded new file! ", newFileUploaded);
+      // var document = new DOCUMENT(newFileUploaded);
+      // document.save(function(error, newFile) {
+      //   if (error) {
+      //     throw error;
+      //   }
+      // });
+    }
+  });
+});
+
   function fetchSubscribers(sighting) {
     let msg = `
-      A whale has been sighted!
+      A whale has been sighted near ${sighting.city}! 
 
-      Log-in to www.PNWWhalewatch.com to see where
+      www.PNWWhalewatch.com for details
     `;
 
-    // Testing hardcoded values
-    let nums = '12064120323';
-    notifySubscribers(nums, msg);
-    
     //DB call for list of subscribers
     db.User.findAll({
       where: {
         receiveNotification: true
       }
     }).then(function(data) {
-      console.log("Users to be notified: ", data);
-      // data.forEach(element => {
-      //   console.log("About to message ", element);
-        // notifySubscribers(data, msg);
-      // });
+      console.log("Users to be notified: ");
+      data.forEach(element => {
+        // console.log(`+1${element.phoneNumber}`, msg);
+        notifySubscribers(`+1${element.phoneNumber}`, msg);
+      });
     })
   };
 
@@ -149,20 +167,16 @@ module.exports = function(app) {
     //Foreach subscriber, send text;
     let params = {
       Message: msg,
-      PhoneNumber: '+' + num,
+      PhoneNumber: num,
       MessageAttributes: {
           'AWS.SNS.SMS.SenderID': {
               'DataType': 'String',
-              'StringValue': "PNW-Whale-Watchers"
+              'StringValue': "PNWWhaler"
           }
       }
     };
     const publishTextPromise = new AWS.SNS({ apiVersion: '2010-03-31' }).publish(params).promise();
-    publishTextPromise.then(
-      function (data) {
-        console.log(`SNS Successful! ${data}`);
-      }
-    ).catch(
+    publishTextPromise.catch(
       function (err) {
           console.log(`An SNS error has occured: ${err}`);
       }
