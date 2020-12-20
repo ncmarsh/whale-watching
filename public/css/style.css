@@ -4,6 +4,11 @@
     font-size: 2.5rem;
 }
 
+/* Navbar menu titles */
+.nav-title {
+    font-size: 1rem;
+}
+
 /* Welcome page */
 /* Slide show images */
 .ss-pic {
@@ -68,6 +73,7 @@ button.user-edit {
     margin-left: 9rem;
     margin-right: 3rem;
     width: 80%;
+    opacity: 85%;
 }
 
 /* Size and position of logos */
