@@ -34,7 +34,8 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         //validates whether the entered phone number matches this RegExp
         //source: stackoverflow
-        is: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+        // is: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+        is: /^(\(?[0-9]{3}\)?)((\s|\-){1})?[0-9]{3}((\s|\-){1})?[0-9]{4}$/        
       }
     },
     receiveNotification: {

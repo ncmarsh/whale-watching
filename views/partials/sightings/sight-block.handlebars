@@ -1,6 +1,34 @@
-<li>
-    {{createdAt}}
-    {{city}}
-    {{description}}
-    {{userName}}
-</li>
+{{!-- Historical sightings post --}}
+<div class="sighting-post uk-card uk-card-default uk-card-hover uk-child-width-expand">
+    <div class="uk-card-header">
+        <h3 class="uk-card-title">
+            Orcas
+            {{ whale-type }}
+        </h3>
+    </div>
+    <div class="sight-card-body uk-card-body">
+        <ul>
+            <li class="sight-list">
+                <h3>Spotted near: </h6>
+                <p>{{ city }}</p>
+            </li>
+            <li class="sight-list">
+                <h4>Time reported: </h4>
+                <p>{{ createdAt }}</p>
+            </li>
+            <li class="sight-list">
+                <h4>Sighting: </h4>
+                <p>{{ description }}</p>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-card-footer">
+        <div class="edit-buttons uk-button-group uk-text-right">
+            <h4>Posted by: {{ userName }}</h4>
+            {{#if req.user }}
+                <button class="user-edit uk-button uk-button-default"><span uk-icon="pencil"></span></button>
+                <button class="user-edit uk-button uk-button-default"><span class="user-edit" uk-icon="trash"></span></button>
+            {{/if}}
+        </div>
+    </div>
+</div>
