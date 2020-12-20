@@ -5,7 +5,17 @@
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
             <h2 class="uk-modal-title">New Whale Sighting</h2>
             <form>
+                <select id="new-post-whale" class="uk-select">
+                    <option>Select the type of whale seen</option>
+                    <option>Gray Whale</option>
+                    <option>Humpback Whale</option>
+                    <option>Minke Whale</option>
+                    <option>Orca Whale</option>
+                    <option>Uncertain</option>
+                    <option>Other</option>
+                </select>
                 <select id="new-post-city" class="uk-select">
+                    <option>Select a nearby location</option>
                     <option>Anacortes</option>
                     <option>Bainbridge Island</option>
                     <option>Bellingham</option>
@@ -27,23 +37,16 @@
                     <option>Seattle</option>
                     <option>Tacoma</option>
                     <option>Other</option>
-                </select>
-                <select id="new-post-whale" class="uk-select">
-                    <option>Gray Whale</option>
-                    <option>Humpback Whale</option>
-                    <option>Minke Whale</option>
-                    <option>Orca Whale</option>
-                    <option>Uncertain</option>
-                    <option>Other</option>
-                </select>
+                </select>               
                 <textarea id="new-post-description" class="uk-textarea"></textarea>
-                <div id='map' style='width: 520px; height: 300px;'></div> 
-                {{!-- <pre id="info"></pre>  --}}
-                {{!-- <div id="map"></div> --}}
+                <div id='map' style='width: 520px; height: 300px;'></div>                 
                 <pre id="coordinates" class="coordinates"></pre>
                 <button id="submit-post-btn" class="uk-button uk-button-default">Submit</button>
             </form>
-            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button id="submit-post-btn" class="uk-button uk-button-primary" type="button">Save</button>
+            </div>
         </div>
     </div>
 {{else}}
@@ -52,8 +55,9 @@
             <h2 class="uk-modal-title">Please log in and try again.</h2> 
         </div>
     </div>
-{{/if}}           
-           
+
+{{/if}}      
 
 <script src="/js/map.js"></script>      
+
 
