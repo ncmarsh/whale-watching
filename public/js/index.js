@@ -59,8 +59,7 @@ $(document).ready(function() {
                     specificLocation: specificLocation,
                     description: description,
                     lng: window.mapLocation.lng,
-                    lat: window.mapLocation.lat,
-                    
+                    lat: window.mapLocation.lat                    
                 }               
                 console.log(new_sighting)
                 postCreate(new_sighting);

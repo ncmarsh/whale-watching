@@ -19,8 +19,6 @@ map.on('click', function (e) {
         lng : e.lngLat.wrap().lng
     }; 
 
-
-
     // console.log(e.lngLat.wrap().lat)
     // console.log(e.lngLat.wrap().lng)
     console.log(parent);
