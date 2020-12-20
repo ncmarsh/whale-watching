@@ -15,7 +15,7 @@ module.exports = function(app) {
       req.body
     ).then(function(data) {
       res.json(data);
-      fetchSubscribers(data);
+      // fetchSubscribers(data); //SNS Notification system. Hushed for dev.
     })
   });
 
@@ -73,11 +73,8 @@ module.exports = function(app) {
   // GET route for all user data
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
-      // The user is not logged in, send back an empty object
       res.json({});
     } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
         id: req.user.id
@@ -99,8 +96,7 @@ module.exports = function(app) {
     });
   });
 
-// route to upload a pdf document file
-// In upload.single("file") - the name inside the single-quote is the name of the field that is going to be uploaded.
+//POST route to upload a document file
 app.post("/api/upload", upload.single("file"), function(req, res) {
   const file = req.file;
   const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
@@ -111,8 +107,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
     region: process.env.AWS_S3_REGION
   });
 
-  //Where you want to store your file
-
+  //Stored file metadata
   var params = {
     Bucket: process.env.AWS_S3_BUCKET_NAME,
     Key: file.originalname,
@@ -121,6 +116,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
     ACL: "public-read"
   };
 
+  //Call to S3 storage, uploading picture
   s3bucket.upload(params, function(err, data) {
     if (err) {
       res.status(500).json({ error: true, Message: err });
@@ -131,24 +127,38 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
         fileLink: s3FileURL + file.originalname,
         s3_key: params.Key
       };
+
+      //Put update to latest sighting post with picture name and URL Link
       console.log("Uploaded new file! ", newFileUploaded);
-      // var document = new DOCUMENT(newFileUploaded);
-      // document.save(function(error, newFile) {
-      //   if (error) {
-      //     throw error;
-      //   }
-      // });
+      db.Sighting.findAll(
+        {
+          limit: 1,
+          order: [[ 'createdAt', 'DESC']]
+        }
+      ).then(function(latestRecord){
+        db.Sighting.update(
+          {
+            pictureName: newFileUploaded.description,
+            pictureUrl: newFileUploaded.fileLink
+          },
+          {
+          where: {
+            id: latestRecord.id
+            }
+          }
+        ).then(function(data) {
+          res.json(data);
+        })
+      });
     }
-  });
+  })
 });
 
   function fetchSubscribers(sighting) {
     let msg = `
       A whale has been sighted near ${sighting.city}! 
 
-      www.PNWWhalewatch.com for details
-    `;
-
+      www.PNWWhalewatch.com for details`;
     //DB call for list of subscribers
     db.User.findAll({
       where: {

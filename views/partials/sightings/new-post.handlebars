@@ -3,7 +3,7 @@
     <div id="new-post" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
             <h2 class="uk-modal-title">New Whale Sighting</h2>
-            <form>
+            <form action="/api/upload" enctype="multipart/form-data" method="POST">
                 <select id="new-post-city" class="uk-select">
                     <option>Anacortes</option>
                     <option>Bainbridge Island</option>
@@ -36,6 +36,7 @@
                     <option>Other</option>
                 </select>
                 <textarea id="new-post-description" class="uk-textarea"></textarea>
+                <input type="file" name="sightingImage" accept="image/*" />
                 <button id="submit-post-btn" class="uk-button uk-button-default">Submit</button>
             </form>
             <button class="uk-modal-close-default" type="button" uk-close></button>
