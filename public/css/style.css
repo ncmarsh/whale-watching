@@ -9,6 +9,17 @@
     font-size: 1rem;
 }
 
+/* Signup/Login Modals */
+.modal-width {
+    width: auto;
+}
+
+#login-btn,
+#signup-btn {
+    border-radius: 5px;
+    background-color: #1540ff;
+}
+
 /* Welcome page */
 /* Slide show images */
 .ss-pic {
@@ -32,7 +43,18 @@ div.wallpaper {
     margin-top: 1rem;
     margin-left: 80%;
     position: fixed;
+    background-color: #47a17c;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 100%;
+    font-weight: bold;
+    border: 2px #000000 solid;
 } 
+
+.post-map {
+    height: 300px; 
+    width: 100%;
+}
 
 /* Draggable map marker */
 .coordinates {
@@ -51,11 +73,11 @@ div.wallpaper {
 
 /* Sighting post cards*/
 .sighting-post {
-    margin-left: 25%;
-    margin-right: 25%;
+    /* margin-left: 25%;
+    margin-right: 25%; */
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 50%;
+    /* width: 50%; */
     border-radius: 15px;
     padding: 20px;
     border: 2px solid #bbbbbb;
