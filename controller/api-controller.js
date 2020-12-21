@@ -18,7 +18,8 @@ module.exports = function(app) {
     db.Sighting.create(      
       req.body
     ).then(function(data) {
-      res.json(data);
+      res.json(data.dataValues);
+      console.log("Made a post sightings with data: ", data.dataValues)
       // fetchSubscribers(data); //SNS Notification system. Hushed for dev.
     })
   });
@@ -101,7 +102,8 @@ module.exports = function(app) {
   });
 
 //POST route to upload a document file
-app.post("/api/upload", upload.single("file"), function(req, res) {
+app.post("/api/upload", upload.single("myPicture"), function(req, res) {
+  console.log("REQUEST FOR FILE UPLOAD", req)
   const file = req.file;
   const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
 
@@ -140,14 +142,15 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
           order: [[ 'createdAt', 'DESC']]
         }
       ).then(function(latestRecord){
+        console.log("FOUND LATEST Record", latestRecord.dataValues)
         db.Sighting.update(
           {
-            pictureName: newFileUploaded.description,
+            pictureName: newFileUploaded.s3_key,
             pictureUrl: newFileUploaded.fileLink
           },
           {
           where: {
-            id: latestRecord.id
+            id: latestRecord.dataValues.id
             }
           }
         ).then(function(data) {
