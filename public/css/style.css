@@ -51,11 +51,6 @@ div.wallpaper {
     border: 2px #000000 solid;
 } 
 
-.post-map {
-    height: 300px; 
-    width: 100%;
-}
-
 /* Draggable map marker */
 .coordinates {
     background: rgba(0, 0, 0, 0.5);
@@ -89,6 +84,16 @@ div.wallpaper {
 
 li.sight-list {
     list-style-type: none;
+}
+
+.list-map {
+    float: right;
+    clear: none;
+}
+
+.post-map {
+    height: 200px; 
+    max-width: 150px;
 }
 
 .edit-buttons {
