@@ -14,8 +14,9 @@ module.exports = function(app) {
     db.Sighting.create(      
       req.body
     ).then(function(data) {
-      res.json(data);
-      // fetchSubscribers(data); //TODO uncomment when deployed final
+      res.json(data.dataValues);
+      console.log("Made a post sightings with data: ", data.dataValues)
+      // fetchSubscribers(data); //SNS Notification system. Hushed for dev.
     })
   });
 
@@ -96,9 +97,11 @@ module.exports = function(app) {
     });
   });
 
-// route to upload a pdf document file
-// In upload.single("file") - the name inside the single-quote is the name of the field that is going to be uploaded.
-app.post("/api/upload", upload.single("file"), function(req, res) {
+//POST route to upload a document file
+app.post("/api/upload", upload.single("myPicture"), async function(req, res) {
+  //Sleep for DB record to be created. TODO handle better in production.
+  await new Promise(r => setTimeout(r, 2000));
+
   const file = req.file;
   const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
 
@@ -108,8 +111,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
     region: process.env.AWS_S3_REGION
   });
 
-  //Where you want to store your file
-
+  //Stored file metadata
   var params = {
     Bucket: process.env.AWS_S3_BUCKET_NAME,
     Key: file.originalname,
@@ -118,6 +120,7 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
     ACL: "public-read"
   };
 
+  //Call to S3 storage, uploading picture
   s3bucket.upload(params, function(err, data) {
     if (err) {
       res.status(500).json({ error: true, Message: err });
@@ -128,24 +131,37 @@ app.post("/api/upload", upload.single("file"), function(req, res) {
         fileLink: s3FileURL + file.originalname,
         s3_key: params.Key
       };
-      console.log("Uploaded new file! ", newFileUploaded);
-      // var document = new DOCUMENT(newFileUploaded);
-      // document.save(function(error, newFile) {
-      //   if (error) {
-      //     throw error;
-      //   }
-      // });
+
+      //Put update to latest sighting post with picture name and URL Link     
+      db.Sighting.findOne(
+        {
+          order: [[ 'createdAt', 'DESC']]
+        }
+      ).then(function(latestRecord){
+        db.Sighting.update(
+          {
+            pictureName: newFileUploaded.s3_key,
+            pictureUrl: newFileUploaded.fileLink
+          },
+          {
+          where: {
+            id: latestRecord.dataValues.id
+            }
+          }
+        ).then(function() {
+          // res.json(data);
+          console.log(`Sighting has been updated with data.`);
+        })
+      });
     }
-  });
+  })
 });
 
   function fetchSubscribers(sighting) {
     let msg = `
       A whale has been sighted near ${sighting.city}! 
 
-      www.PNWWhalewatch.com for details
-    `;
-
+      www.PNWWhalewatch.com for details`;
     //DB call for list of subscribers
     db.User.findAll({
       where: {

@@ -3,7 +3,7 @@
     <div id="new-post" class="uk-flex-top uk-modal-container" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
             <h2 class="uk-modal-title">New Whale Sighting</h2>
-            <form>
+            <form action="/api/upload" enctype="multipart/form-data" method="POST">
                 <div class="uk-margin">
                     <select id="new-post-whale" class="uk-select">
                         <option value="">Select the type of whale seen</option>
@@ -43,16 +43,18 @@
                 </div>
                 <div class="uk-margin">
                     <textarea id="new-post-description" class="uk-textarea" placeholder="Description of the event"></textarea>
+                    <label for="pictureId">Picture upload</label>
+                    <input id="pictureId" type="file" name="myPicture" accept="image/*" />
                 </div>
                 <div class="uk-margin">Drag the pin to the specific location you saw the whale
                     <div id='map' style='width: 520px; height: 300px;'></div>
                     <pre id="coordinates" class="coordinates"></pre>
                 </div>
-            </form>
             <div class="uk-modal-footer uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                <button id="submit-post-btn" class="uk-button uk-button-primary" type="button">Save</button>
+                <button id="submit-post-btn" class="uk-button uk-button-primary" type="submit">Save</button>
             </div>
+            </form>
         </div>
     </div>
 {{else}}
