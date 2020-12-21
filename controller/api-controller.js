@@ -3,10 +3,6 @@ const passport = require("../config/passport");
 const AWS = require('aws-sdk');
 const multer = require("multer");
 
-// const mbxGeocodig = require('@mapbox/mapbox-sdk/services/geocoding')
-// const mapToken = process.env.MAPBOX_TOKEN;
-// const geoCoder = mbxGeocodig({accessToken: mapToken});
-
 module.exports = function(app) {
   var storage = multer.memoryStorage();
   var upload = multer({ storage: storage });
@@ -102,8 +98,10 @@ module.exports = function(app) {
   });
 
 //POST route to upload a document file
-app.post("/api/upload", upload.single("myPicture"), function(req, res) {
-  console.log("REQUEST FOR FILE UPLOAD", req)
+app.post("/api/upload", upload.single("myPicture"), async function(req, res) {
+  //Sleep for DB record to be created. TODO handle better in production.
+  await new Promise(r => setTimeout(r, 2000));
+
   const file = req.file;
   const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
 
@@ -134,15 +132,12 @@ app.post("/api/upload", upload.single("myPicture"), function(req, res) {
         s3_key: params.Key
       };
 
-      //Put update to latest sighting post with picture name and URL Link
-      console.log("Uploaded new file to AWS S3! file:", newFileUploaded);
-      db.Sighting.findAll(
+      //Put update to latest sighting post with picture name and URL Link     
+      db.Sighting.findOne(
         {
-          limit: 1,
           order: [[ 'createdAt', 'DESC']]
         }
       ).then(function(latestRecord){
-        console.log("FOUND LATEST Record", latestRecord.dataValues)
         db.Sighting.update(
           {
             pictureName: newFileUploaded.s3_key,
@@ -153,9 +148,9 @@ app.post("/api/upload", upload.single("myPicture"), function(req, res) {
             id: latestRecord.dataValues.id
             }
           }
-        ).then(function(data) {
-          res.json(data);
-          console.log(`Sighting has been updated with data: `, data);
+        ).then(function() {
+          // res.json(data);
+          console.log(`Sighting has been updated with data.`);
         })
       });
     }
