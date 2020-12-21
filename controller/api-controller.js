@@ -99,62 +99,64 @@ module.exports = function(app) {
 
 //POST route to upload a document file
 app.post("/api/upload", upload.single("myPicture"), async function(req, res) {
-  //Sleep for DB record to be created. TODO handle better in production.
-  await new Promise(r => setTimeout(r, 2000));
+  if (req.file.originalname) {
+    //Sleep for DB record to be created. TODO handle better in production.
+    await new Promise(r => setTimeout(r, 2000));
 
-  const file = req.file;
-  const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
+    const file = req.file;
+    const s3FileURL = process.env.AWS_S3_Uploaded_File_URL_LINK;
 
-  let s3bucket = new AWS.S3({
-    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
-    region: process.env.AWS_S3_REGION
-  });
+    let s3bucket = new AWS.S3({
+      accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+      region: process.env.AWS_S3_REGION
+    });
 
-  //Stored file metadata
-  var params = {
-    Bucket: process.env.AWS_S3_BUCKET_NAME,
-    Key: file.originalname,
-    Body: file.buffer,
-    ContentType: file.mimetype,
-    ACL: "public-read"
-  };
+    //Stored file metadata
+    var params = {
+      Bucket: process.env.AWS_S3_BUCKET_NAME,
+      Key: file.originalname,
+      Body: file.buffer,
+      ContentType: file.mimetype,
+      ACL: "public-read"
+    };
 
-  //Call to S3 storage, uploading picture
-  s3bucket.upload(params, function(err, data) {
-    if (err) {
-      res.status(500).json({ error: true, Message: err });
-    } else {
-      res.send({ data });
-      var newFileUploaded = {
-        description: req.body.description,
-        fileLink: s3FileURL + file.originalname,
-        s3_key: params.Key
-      };
+    //Call to S3 storage, uploading picture
+    s3bucket.upload(params, function(err, data) {
+      if (err) {
+        res.status(500).json({ error: true, Message: err });
+      } else {
+        res.send({ data });
+        var newFileUploaded = {
+          description: req.body.description,
+          fileLink: s3FileURL + file.originalname,
+          s3_key: params.Key
+        };
 
-      //Put update to latest sighting post with picture name and URL Link     
-      db.Sighting.findOne(
-        {
-          order: [[ 'createdAt', 'DESC']]
-        }
-      ).then(function(latestRecord){
-        db.Sighting.update(
+        //Put update to latest sighting post with picture name and URL Link     
+        db.Sighting.findOne(
           {
-            pictureName: newFileUploaded.s3_key,
-            pictureUrl: newFileUploaded.fileLink
-          },
-          {
-          where: {
-            id: latestRecord.dataValues.id
-            }
+            order: [[ 'createdAt', 'DESC']]
           }
-        ).then(function() {
-          // res.json(data);
-          console.log(`Sighting has been updated with data.`);
-        })
-      });
-    }
-  })
+        ).then(function(latestRecord){
+          db.Sighting.update(
+            {
+              pictureName: newFileUploaded.s3_key,
+              pictureUrl: newFileUploaded.fileLink
+            },
+            {
+            where: {
+              id: latestRecord.dataValues.id
+              }
+            }
+          ).then(function() {
+            // res.json(data);
+            console.log(`Sighting has been updated with data.`);
+          })
+        });
+      }
+    })      
+  }
 });
 
   function fetchSubscribers(sighting) {
