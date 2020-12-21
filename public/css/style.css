@@ -82,20 +82,25 @@ button.user-edit {
 }
 
 /* Resources Page */
+.resource-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
 /* Full resource card */
 .resource-card {
     margin-top: 1.5rem;
-    margin-left: 9rem;
-    margin-right: 3rem;
-    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
     opacity: 85%;
+    padding: 0;
 }
 
 /* Size and position of logos */
 .logo-div {
     display: block;
     margin: 1rem;
-    max-width: 300px;
+    max-width: 350px;
     max-height: 250px;
     padding: 0;
 }
