@@ -95,7 +95,8 @@ button.user-edit {
 .link {
     color: #000000;
 }
-/* for the draggable map marker */
+
+/* style to show the coordinates when the marker on map draged to a different location */
 .coordinates {
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
