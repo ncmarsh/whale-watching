@@ -46,7 +46,7 @@ Along the way we had many ideas come into mind that we would like to incorporate
 ## Contact
 
 - Dan Cornutt - [@dancornutt](https://github.com/dancornutt)
-- Girma - [@girmaD](https://github.com/girmaD)
+- Girma Ebssa - [@girmaD](https://github.com/girmaD)
 - Olga Illarionova - [@Myau5x](https://github.com/Myau5x)
 - Nicole Marshall - [@ncmarsh](https://github.com/ncmarsh)
 
