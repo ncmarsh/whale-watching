@@ -1,55 +1,107 @@
-/* Welcome page */
-/* Slide show images */
-.ss-pic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    /* width: 50%; */
+/* Navbar title */
+.title {
+    font-weight: bold;
+    font-size: 2.5rem;
 }
 
-/* Sightings Page */
+/* Navbar menu titles */
+.nav-title {
+    font-size: 1rem;
+}
+
+/* Signup/Login Modals */
+.modal-width {
+    width: auto;
+}
+
+#login-btn,
+#signup-btn,
+#submit-post-btn {
+    border-radius: 5px;
+    background-color: #1540ff;
+}
+
+#cancel-post-btn {
+    border-radius: 5px;
+    background-color: #dddddd;
+}
+
+/* Welcome page */
+/* Slide show */
+.ss-container {
+    height: 100vh;
+    width: auto;
+}
+
+/* Slide show images */
+.ss-li,
+.ss-pic {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+/* Background for other pages */
 /* Background */
 div.wallpaper {
     background-image: url(https://images.pexels.com/photos/3325908/pexels-photo-3325908.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    height: 100%;
+    height: 100vh;
+    width: auto;
 }
 
-/* Page header */
-.page-header {
-    padding-top: 0.75rem;
-}
-
-/* Header text */
-.header-text {
-    color: #ffffff;
-}
-
+/* Sightings Page */
 /* Position the add new sighting post button */
 #add-post-btn {
+    margin-top: 1rem;
+    margin-left: 80%;
+    position: fixed;
+    background-color: #47a17c;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 100%;
+    font-weight: bold;
+    border: 2px #000000 solid;
+} 
+
+#pictureId {
+    border-radius: 2px;
+}
+
+/* Draggable map marker */
+.coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
     position: absolute;
-    right: 20px;
+    bottom: 40px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
 }
 
 /* Sighting post cards*/
 .sighting-post {
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 50%;
+    width: 80%;
     border-radius: 15px;
-    padding: 20px;
     border: 2px solid #bbbbbb;
-}
-
-.sight-card-body {
-    padding: 0.5rem;
 }
 
 li.sight-list {
     list-style-type: none;
+}
+
+.post-map {
+    height: 200px; 
+    width: auto;
 }
 
 .edit-buttons {
@@ -65,11 +117,43 @@ button.user-edit {
 }
 
 /* Resources Page */
-/* Size and position of logos */
-.logo-img {
-    display: block;
+.resource-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* Full resource card */
+.resource-card {
+    margin-top: 1.5rem;
     margin-left: auto;
     margin-right: auto;
-    width: auto;
-    height: 100%;
+    width: 100%;
+    opacity: 85%;
+    padding: 0;
+}
+
+/* Size and position of logos */
+.logo-div {
+    display: block;
+    margin: 1rem;
+    max-width: 350px;
+    max-height: 250px;
+    padding: 0;
+}
+
+.logo-img {
+    display: block;
+    min-width: 160px;
+    max-width: 300px;
+    min-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uk-card-media-left {
+    width: 100px;
+}
+
+.link {
+    color: #000000;
 }

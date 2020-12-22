@@ -1,42 +1,75 @@
 <!-- Form to add new sighting post -->
-<div id="new-post" class="uk-flex-top" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
-        <h2 class="uk-modal-title">New Whale Sighting</h2>
-        <form>
-            <select id="new-post-city" class="uk-select">
-                <option>Anacortes</option>
-                <option>Bainbridge Island</option>
-                <option>Bellingham</option>
-                <option>Birch Bay</option>
-                <option>Blaine</option>
-                <option>Bremerton</option>
-                <option>Des Moines</option>
-                <option>Edmonds</option>
-                <option>Everett</option>
-                <option>Friday Harbor</option>
-                <option>Gig Harbor</option>
-                <option>Kingston</option>
-                <option>Lime Kiln Point State Park</option>
-                <option>Lopez Island</option>
-                <option>Mukilteo</option>
-                <option>Orcas Island</option>
-                <option>Port Townsend</option>
-                <option>Roche Harbor</option>
-                <option>Seattle</option>
-                <option>Tacoma</option>
-                <option>Other</option>
-            </select>
-            <select id="new-post-whale" class="uk-select">
-                <option>Gray Whale</option>
-                <option>Humpback Whale</option>
-                <option>Minke Whale</option>
-                <option>Orca Whale</option>
-                <option>Uncertain</option>
-                <option>Other</option>
-            </select>
-            <textarea id="new-post-description" class="uk-textarea"></textarea>
-            <button id="submit-post-btn" class="uk-button uk-button-default">Submit</button>
-        </form>
-        <button class="uk-modal-close-default" type="button" uk-close></button>
+{{#if username}}
+    <div id="new-post" class="uk-flex-top uk-modal-container" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+            <h2 class="uk-modal-title">New Whale Sighting</h2>
+            <form action="/api/upload" enctype="multipart/form-data" method="POST">
+                <div class="uk-margin">
+                    <select id="new-post-whale" class="uk-select">
+                        <option value="">Select the type of whale seen</option>
+                        <option>Gray Whale</option>
+                        <option>Humpback Whale</option>
+                        <option>Minke Whale</option>
+                        <option>Orca Whale</option>
+                        <option>Uncertain</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="uk-margin">
+                    <select id="new-post-city" class="uk-select">
+                        <option value="">Select a nearby location</option>
+                        <option>Anacortes</option>
+                        <option>Bainbridge Island</option>
+                        <option>Bellingham</option>
+                        <option>Birch Bay</option>
+                        <option>Blaine</option>
+                        <option>Bremerton</option>
+                        <option>Des Moines</option>
+                        <option>Edmonds</option>
+                        <option>Everett</option>
+                        <option>Friday Harbor</option>
+                        <option>Gig Harbor</option>
+                        <option>Kingston</option>
+                        <option>Lime Kiln Point State Park</option>
+                        <option>Lopez Island</option>
+                        <option>Mukilteo</option>
+                        <option>Orcas Island</option>
+                        <option>Port Townsend</option>
+                        <option>Roche Harbor</option>
+                        <option>Seattle</option>
+                        <option>Tacoma</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="uk-margin">
+                    <textarea id="new-post-description" class="uk-textarea" placeholder="Description of the event"></textarea>
+                </div>
+                <div class="uk-margin">    
+                    <label for="pictureId">Picture upload</label>
+                    <input id="pictureId" type="file" name="myPicture" accept="image/*" />
+                </div>
+                <div class="uk-margin">Drag the pin to the specific location you saw the whale
+                    <div id='map' style='width: 520px; height: 300px;'></div>
+                    <pre id="coordinates" class="coordinates"></pre>
+                </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button id="cancel-post-btn" class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button id="submit-post-btn" class="uk-button uk-button-primary" type="submit">Save</button>
+            </div>
+            </form>
+        </div>
     </div>
-</div>
+{{else}}
+    <div id="new-post" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+            <h2 class="uk-modal-title">Please log in and try again.</h2> 
+        </div>
+    </div>
+{{/if}}      
+
+<script src="/js/map.js"></script>      
+
+
+
+
+       
