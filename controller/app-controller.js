@@ -28,7 +28,6 @@ module.exports = function(app) {
       ['id', 'DESC']],
       include: [db.User]
     }).then(function(data) {
-
       let username = "";
       let uid =0;
       if (req.user){
@@ -36,7 +35,6 @@ module.exports = function(app) {
         uid = req.user.id;
         console.log(username)
       }
-
       let arr = [];
       data.forEach(e => {
         //console.log(e.dataValues);
@@ -50,7 +48,10 @@ module.exports = function(app) {
           whaleType: e.dataValues.whaleType,
           isAuthor: e.dataValues.UserId==uid,                  
           lat: e.dataValues.lat,
-          lng: e.dataValues.lng
+          lng: e.dataValues.lng,
+          pictureName: e.dataValues.pictureName,
+          pictureUrl: e.dataValues.pictureUrl,
+          isAuthor: e.dataValues.UserId==uid
         })
       });
       
