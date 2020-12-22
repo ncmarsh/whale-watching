@@ -19,6 +19,7 @@
                 <h4>Sighting: </h4>
                 <p>{{ description }}</p>
                 {{#if pictureUrl}}  {{!not null }}
+                    <span uk-icon="image"></span>
                     <a href={{ pictureUrl }} target="_blank"><h6>Sighting Photo</h6></a>
                 {{/if}}
             </li>
