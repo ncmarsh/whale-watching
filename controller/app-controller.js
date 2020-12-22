@@ -33,11 +33,9 @@ module.exports = function(app) {
       if (req.user){
         username = req.user.userName;
         uid = req.user.id;
-        console.log(username)
       }
       let arr = [];
       data.forEach(e => {
-        //console.log(e.dataValues);
         arr.push({
           id : e.dataValues.id,
           createdAt: e.dataValues.createdAt,
