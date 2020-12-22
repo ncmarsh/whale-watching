@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# whale-watching
-
-Adding content for testing
-=======
 # PNW Whale Watching
 
 Be notified of local whale sightings and, if you're one of the lucky ones, be able to post your own and share with others.
@@ -64,4 +59,3 @@ This is a personal project; no contributions are required at this time.
 No license granted.
 
 ##### [Return to Top of Page](#PNW-Whale-Watching)
->>>>>>> Develop
