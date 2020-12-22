@@ -1,31 +1,52 @@
+{{!-- Sightings post --}}
+<div class="sighting-post uk-card uk-card-default uk-card-hover uk-child-width-expand">
+    <div class="uk-card-header">
+        <h3 class="uk-card-title">
+            Whale seen: {{ whaleType }}
+        </h3>
+    </div>
+    <div class="sight-card-body uk-card-body">
+        <ul>
+            <li class="sight-list">
+                <h3>Spotted near: </h6>
+                <p>{{ city }}</p>
+            </li>
+            <li class="sight-list">
+                <h4>Time reported: </h4>
+                <p>{{ createdAt }}</p>
+            </li>
+            <li class="sight-list">
+                <h4>Sighting: </h4>
+                <p>{{ description }}</p>
+            </li>
+            <li class="sight-list">
+                <h4>Location on map: </h4>
+                <div id="dispMap{{ lat }}{{ lng }}" class="post-map"></div>
+                <script>            
+                    var lnglatArr = [{{ lng }}, {{ lat }}]; 
+                    console.log('latlongARRay', lnglatArr)
 
-<li>
-    <p>Posted at: {{createdAt }}</p>
-    <p>Nearest City: {{city }}</p>
-    <p>Description : {{description }}</p>
-    <p>Posted By: {{ userName }}</p>
-    <p>Approximate location: on the pin drop below on lat {{ lat }} and lon {{ lng }}
-        
-        <div id="dispMap{{lat}}{{lng}}" style="height: 300px; width: 100%"></div>
-        <script>            
-            var lnglatArr = [{{ lng }}, {{ lat }}]; 
-            console.log('latlongARRay', lnglatArr)
-            
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lybWFkIiwiYSI6ImNraXFnNGFiNjFjaWIzOG84aGpvd2xtOGIifQ.7CC9ym81Xt2gfUcxbB2Lkg';
-            var dispMap = new mapboxgl.Map({
-                container: "dispMap{{lat}}{{lng}}",
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: lnglatArr,
-                zoom: 9
-            });
-        
-            var marker = new mapboxgl.Marker()
-            .setLngLat(lnglatArr)
-            .addTo(dispMap);       
-        </script>
-    </p>
-    
-</li>
-    
-    
+                    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lybWFkIiwiYSI6ImNraXFnNGFiNjFjaWIzOG84aGpvd2xtOGIifQ.7CC9ym81Xt2gfUcxbB2Lkg';
+                    var dispMap = new mapboxgl.Map({
+                        container: "dispMap{{lat}}{{lng}}",
+                        style: 'mapbox://styles/mapbox/streets-v11',
+                        center: lnglatArr,
+                        zoom: 9
+                    });
 
+                    var marker = new mapboxgl.Marker()
+                    .setLngLat(lnglatArr)
+                    .addTo(dispMap);       
+                </script>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-card-footer">
+        <div class="edit-buttons uk-button-group uk-text-right">
+            <h4>Posted by: {{ userName }}</h4>
+            {{#if isAuthor }}
+                <button class="user-edit uk-button uk-button-default delete" data-id="{{id}}" data-userid="{{userId}}"><span class="user-edit" uk-icon="trash"></span></button>
+            {{/if}}
+        </div>
+    </div>
+</div>

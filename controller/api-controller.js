@@ -1,35 +1,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
-const mbxGeocodig = require('@mapbox/mapbox-sdk/services/geocoding')
-const mapToken = process.env.MAPBOX_TOKEN;
-const geoCoder = mbxGeocodig({accessToken: mapToken});
 
 module.exports = function(app) {
-
-  // GET route for getting all of the sightings
-  // app.get("/api/sightings", function(req, res) {
-  //   db.Sighting.findAll({}).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
-
-  // GET route for getting all of the sightings near a city
-  // app.get("/api/sightings/:location", function(req, res) {
-  //   db.Sighting.findAll({
-  //       city: req.params.city
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
-
-  // GET route for getting all of the sightings for a particular whale
-  // app.get("/api/sightings/:whale", function(req, res) {
-  //   db.Sighting.findAll({
-  //       whaleType: req.params.whaleType
-  //   }).then(function(data) {
-  //     res.json(data);
-  //   })
-  // });
 
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
@@ -39,7 +11,7 @@ module.exports = function(app) {
       req.body
     ).then(function(data) {
       res.json(data);
-      fetchSubscribers(data);
+      // fetchSubscribers(data); //TODO uncomment when deployed final
     })
   });
 
@@ -58,14 +30,29 @@ module.exports = function(app) {
 
   // DELETE route for deleting sightings.
   app.delete("/api/sightings/:id", function(req, res) {
-    db.Sighting.destroy({
+    db.Sighting.findAll({
       where: {
         id: req.params.id
       }
-    }).then(function(data) {
-      res.json(data);
-    })
+  }).then(function(data){
+    userId =  data[0].dataValues.UserId;
+    console.log(data);
+    if (userId ===req.user.id){
+      db.Sighting.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(data) {
+        res.json(data);
+      })
+    }
+    else{
+      console.log(userId);
+      console.log(req.user.id);
+      res.status(401).json(data);
+    }
   });
+})
 
   //POST route for loggin in a known user
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -82,11 +69,8 @@ module.exports = function(app) {
   // GET route for all user data
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
-      // The user is not logged in, send back an empty object
       res.json({});
     } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
       res.json({        
         email: req.user.email,
         id: req.user.id
