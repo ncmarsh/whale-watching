@@ -24,10 +24,14 @@ module.exports = function(app) {
   //   });
   // });
   app.get("/sightings", function(req, res) {
-    db.Sighting.findAll({order: [
-      ['id', 'DESC']],
-      include: [db.User]
-    }).then(function(data) {
+    db.Sighting.findAll(
+      {
+      // order: [
+      //   ['id', 'DESC']
+      // ],
+      //   include: [db.User]
+      }
+    ).then(function(data) {
       let username = "";
       let uid =0;
       // if (req.user){
