@@ -30,10 +30,10 @@ module.exports = function(app) {
     }).then(function(data) {
       let username = "";
       let uid =0;
-      if (req.user){
-        username = req.user.userName;
-        uid = req.user.id;
-      }
+      // if (req.user){
+      //   username = req.user.userName;
+      //   uid = req.user.id;
+      // }
       let arr = [];
       // data.forEach(e => {
       //   arr.push({
