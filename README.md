@@ -1,6 +1,8 @@
 # PNW Whale Watching
 
+Be notified of local whale sightings and, if you're one of the lucky ones, be able to post your own and share with others.
 
+![Home page](./public/images/readme-img/home_screenshot.png)
 
 ## Table of Contents
 
@@ -15,16 +17,17 @@
 
 ## Usage
 
-
+This application allows users to be notified when whales are spotted in the area by having an account through the site. Users post sightings to the page and notifications are sent via text to the other users. There is also information about local organizations in the area that aim to improve the lives of our local whale population.   
 
 ## Languages and Concepts
 
-- [Sequelize](https://sequelize.org/)
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
 - [Passport.js](http://www.passportjs.org/)
 - [Handlebars.js](https://handlebarsjs.com/)
 - [UIKit](https://getuikit.com/)
+- [Sequelize](https://sequelize.org/)
+- [MySQL](https://www.mysql.com/)
 - [Mapbox API](https://docs.mapbox.com/api/overview/)
 
 ## Demo
@@ -33,11 +36,11 @@
 
 ## Roadmap
 
-
+Along the way we had many ideas come into mind that we would like to incorporate: a linter like ES Lint; Travis CI; using a custom pin whale icon on the map; a single overview map that displays all the sightings listed; add filters to view results by whale, time period, location, or view own posts; manage user account - allow users to edit their information, change their password, change notification settings, and delete their user account; add notifications via email (user choice) and allow users to specify locations they want to hear about; user's upload images load to a gallery page; add login via Facebook/Google/Twitter; add user data to user profile - a badge to show how many posts they've made; add verification system so users can verify other's post if they see the same whale(s); add error messages - if input is left blank or if email/password is incorrect at login.
 
 ## Links
 
-- [See it live!](http://www.pnwwhalewatch.com/)
+- [See it live!](https://fathomless-springs-89027.herokuapp.com/)
 - [Project Repository](https://github.com/watchNW/whale-watching)
 
 ## Contact
