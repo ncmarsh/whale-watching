@@ -170,15 +170,11 @@ app.post("/api/upload", upload.single("myPicture"), async function(req, res) {
         receiveNotification: true
       }
     }).then(function(data) {
-<<<<<<< HEAD
       console.log("Users to be notified: ");
       data.forEach(element => {
         // console.log(`+1${element.phoneNumber}`, msg);
         notifySubscribers(`+1${element.phoneNumber}`, msg);
       });
-=======
-      console.log("Users to be notified: ", data);      
->>>>>>> Develop
     })
   };
 
