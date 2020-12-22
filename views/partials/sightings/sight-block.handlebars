@@ -1,37 +1,34 @@
 {{!-- Sightings post --}}
-<div class="sighting-post uk-card uk-card-default uk-card-hover uk-child-width-expand">
-    <div class="uk-card-header">
-        <h3 class="uk-card-title">
-            Whale seen: {{ whaleType }}
-        </h3>
-    </div>
-    <div class="sight-card-body uk-card-body">
+<div class="sighting-post uk-card uk-card-default uk-card-hover uk-grid-collapse uk-child-width-expand@s" uk-grid>
+    <div class="uk-card-body">
         <ul>
             <li class="sight-list">
-                <h3>Spotted near: </h6>
-                <p>{{ city }}</p>
+                <h3>Whale seen: {{ whaleType }}</h3>
             </li>
             <li class="sight-list">
-                <h4>Time reported: </h4>
-                <p>{{ createdAt }}</p>
+                <h4>Spotted near: {{ city }}</h4>
             </li>
             <li class="sight-list">
-                <h4>Sighting: </h4>
-                <p>{{ description }}</p>
+                <h5>Time reported: {{ createdAt }}</h5>
+            </li>
+            <li class="sight-list">
+                <h5>Additional Info: {{ description }}</h5>
                 {{#if pictureUrl}}  {{!not null }}
                     <span uk-icon="image"></span>
                     <a href={{ pictureUrl }} target="_blank"><h6>Sighting Photo</h6></a>
                 {{/if}}
             </li>
+        </ul>
+    </div>    
+    <div class="uk-card-body">
+        <ul>
             <li class="sight-list">
-                <h4>Location on map</h4>
-                <div id="dispMap{{lat}}{{lng}}" style="height: 300px; width: 100%"></div>                               
+                {{!-- <h6>Location on map</h6> --}}
+                <div id="dispMap{{lat}}{{lng}}" class="post-map"></div>                               
             </li>
         </ul>
-    </div>
-    <div class="uk-card-footer">
-        <div class="edit-buttons uk-button-group uk-text-right">
-            <h4>Posted by: {{ userName }}</h4>
+        <div class="uk-text-right">
+            Posted by: {{ userName }}
             {{#if isAuthor }}
                 <button class="user-edit uk-button uk-button-default delete" data-id="{{id}}" data-userid="{{userId}}"><span class="user-edit" uk-icon="trash"></span></button>
             {{/if}}
@@ -54,5 +51,3 @@
     .setLngLat(lnglatArr)
     .addTo(dispMap);       
 </script> 
-
- 
