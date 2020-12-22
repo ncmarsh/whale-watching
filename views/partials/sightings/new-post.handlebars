@@ -43,6 +43,8 @@
                 </div>
                 <div class="uk-margin">
                     <textarea id="new-post-description" class="uk-textarea" placeholder="Description of the event"></textarea>
+                </div>
+                <div class="uk-margin">    
                     <label for="pictureId">Picture upload</label>
                     <input id="pictureId" type="file" name="myPicture" accept="image/*" />
                 </div>
@@ -51,7 +53,7 @@
                     <pre id="coordinates" class="coordinates"></pre>
                 </div>
             <div class="uk-modal-footer uk-text-right">
-                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button id="cancel-post-btn" class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
                 <button id="submit-post-btn" class="uk-button uk-button-primary" type="submit">Save</button>
             </div>
             </form>
