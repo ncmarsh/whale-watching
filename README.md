@@ -40,7 +40,7 @@ Along the way we had many ideas come into mind that we would like to incorporate
 
 ## Links
 
-- [See it live!](http://www.pnwwhalewatch.com/)
+- [See it live!](https://fathomless-springs-89027.herokuapp.com/)
 - [Project Repository](https://github.com/watchNW/whale-watching)
 
 ## Contact
