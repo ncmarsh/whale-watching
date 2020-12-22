@@ -14,6 +14,10 @@ $(document).ready(function() {
         $.get("/sightings/filter",filters).then(function(data){});
     });
 
+    //set mapLocation as a method to the window object
+    window.mapLocation = {};
+
+    
     /**
      * CREATE NEW POST
      * Click button create-post
@@ -78,9 +82,9 @@ $(document).ready(function() {
     }
 
     function handlePostCreate(event) {
-        event.preventDefault();
+        // event.preventDefault();
         $.get("/api/user_data").then(function(data) {
-            //console.log(data);
+            // console.log(data);
             //console.log(!data);
             ///console.log(data ==={});
             ///console.log(JSON.stringify(data)==='{}');
@@ -96,18 +100,24 @@ $(document).ready(function() {
                 let userId = data.id   
                 let city = $("#new-post-city").val();
                 let specificLocation = city;
+                let whaleType = $("#new-post-whale").val();
+
                 let description = $("#new-post-description").val().trim();
                 ///data from form maybe changed depend of form
                 let new_sighting = {
                     UserId: userId,
                     city: city,
+                    whaleType: whaleType,
                     specificLocation: specificLocation,
-                    description: description
-                }
-                postCreate(new_sighting); 
+                    description: description,
+                    lng: window.mapLocation.lng,
+                    lat: window.mapLocation.lat                    
+                }               
+                console.log(new_sighting)
+                postCreate(new_sighting);
             }
             
-          }); 
+        }); 
     }
 
     function handlePostCreateWithoutLogging(event){

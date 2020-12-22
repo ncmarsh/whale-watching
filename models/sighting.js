@@ -4,25 +4,30 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false
       },
-      specificLocation: {
-        // type: DataTypes.GEOMETRY('POINT'),
+      specificLocation: {        
           type: DataTypes.STRING,
                 allowNull: false
       },
-      // lat: {
-      //   type: DataTypes.FLOAT,
-      //   allowNull: false
-      // },
-      // lng: {
-      //   type: DataTypes.FLOAT,
-      //   allowNull: false
-      // },
-      // whaleType: {
-      //     type: DataTypes.STRING
-      // },      
+      whaleType: {
+        type: DataTypes.STRING
+      }, 
       description: {
-          type: DataTypes.TEXT,
-          allowNull: false
+        type: DataTypes.TEXT,
+        allowNull: false
+      },
+      lat: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+      },
+      lng: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+      },     
+      pictureName: {
+          type: DataTypes.STRING          
+      },
+      pictureUrl: {
+          type: DataTypes.STRING          
       }
     });
 
