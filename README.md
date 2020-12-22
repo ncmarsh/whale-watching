@@ -36,7 +36,7 @@ This application allows users to be notified when whales are spotted in the area
 
 ## Roadmap
 
-Along the way we had many ideas come into mind that we would like to incorporate: a linter like ES Lint; Travis CI; using a custom pin whale icon on the map; a single overview map that displays all the sightings listed; add filters to view results by whale, time period, location, or view own posts; manage user account - allow users to edit their information, change their password, change notification settings, and delete their user account; add notifications via email (user choice) and allow users to specify locations they want to hear about; user's upload images load to a gallery page; add login via Facebook/Google/Twitter; add user data to user profile - a badge to show how many posts they've made; add verification system so users can verify other's post if they see the same whale(s); add error messages - if input is left blank or if email/password is incorrect at login.
+Along the way we had many ideas come into mind that we would like to incorporate: a linter like ES Lint; Travis CI; using a custom pin whale icon on the map; a single overview map that displays all the sightings listed; add filters to view results by whale, time period, location, or view own posts; manage user account - allow users to edit their information, change their password, change notification settings, and delete their user account; add notifications via email (user choice) and allow users to specify locations they want to hear about; user's upload images load to a gallery page; add login via Facebook/Google/Twitter; add user data to user profile - a badge to show how many posts they've made; add verification system so users can verify other's post if they see the same whale(s); add specific error messages - if input is left blank or if email/password is incorrect at login.
 
 ## Links
 
@@ -46,7 +46,7 @@ Along the way we had many ideas come into mind that we would like to incorporate
 ## Contact
 
 - Dan Cornutt - [@dancornutt](https://github.com/dancornutt)
-- Girma - [@girmaD](https://github.com/girmaD)
+- Girma Ebssa - [@girmaD](https://github.com/girmaD)
 - Olga Illarionova - [@Myau5x](https://github.com/Myau5x)
 - Nicole Marshall - [@ncmarsh](https://github.com/ncmarsh)
 

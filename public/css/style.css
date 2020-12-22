@@ -15,18 +15,30 @@
 }
 
 #login-btn,
-#signup-btn {
+#signup-btn,
+#submit-post-btn {
     border-radius: 5px;
     background-color: #1540ff;
 }
 
+#cancel-post-btn {
+    border-radius: 5px;
+    background-color: #dddddd;
+}
+
 /* Welcome page */
+/* Slide show */
+.ss-container {
+    height: 100vh;
+    width: auto;
+}
+
 /* Slide show images */
+.ss-li,
 .ss-pic {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
+    position: absolute;
+    height: 100%;
     width: 100%;
 }
 
@@ -37,6 +49,8 @@ div.wallpaper {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    height: 100vh;
+    width: auto;
 }
 
 /* Sightings Page */
@@ -52,6 +66,10 @@ div.wallpaper {
     font-weight: bold;
     border: 2px #000000 solid;
 } 
+
+#pictureId {
+    border-radius: 2px;
+}
 
 /* Draggable map marker */
 .coordinates {
@@ -70,32 +88,20 @@ div.wallpaper {
 
 /* Sighting post cards*/
 .sighting-post {
-    /* margin-left: 25%;
-    margin-right: 25%; */
     margin-top: 2rem;
     margin-bottom: 2rem;
-    /* width: 50%; */
+    width: 80%;
     border-radius: 15px;
-    padding: 20px;
     border: 2px solid #bbbbbb;
-}
-
-.sight-card-body {
-    padding: 0.5rem;
 }
 
 li.sight-list {
     list-style-type: none;
 }
 
-.list-map {
-    float: right;
-    clear: none;
-}
-
 .post-map {
     height: 200px; 
-    max-width: 150px;
+    width: auto;
 }
 
 .edit-buttons {
@@ -115,6 +121,7 @@ button.user-edit {
     margin-left: 5%;
     margin-right: 5%;
 }
+
 /* Full resource card */
 .resource-card {
     margin-top: 1.5rem;
@@ -150,4 +157,3 @@ button.user-edit {
 .link {
     color: #000000;
 }
-
