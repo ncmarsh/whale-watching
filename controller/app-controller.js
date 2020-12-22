@@ -49,6 +49,8 @@ module.exports = function(app) {
           isAuthor: e.dataValues.UserId==uid,                  
           lat: e.dataValues.lat,
           lng: e.dataValues.lng,
+          pictureName: e.dataValues.pictureName,
+          pictureUrl: e.dataValues.pictureUrl,
           isAuthor: e.dataValues.UserId==uid
         })
       });
