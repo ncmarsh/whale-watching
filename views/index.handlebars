@@ -36,23 +36,35 @@
 {{> modals/login-block}}
 {{> modals/signup-block}}
 
-<h1 class="uk-text-center">Welcome {{userName}}!</h1>
-<hr class="uk-divider-icon">
-
 <div class="uk-cover-container">
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="min-height: 300; max-height: 600; animation: fade; ratio: 1600:1200; autoplay: true; autoplay-interval: 4000">
         <ul class="uk-slideshow-items">
             <li>
                 <img class="ss-pic" src="https://images.pexels.com/photos/289324/pexels-photo-289324.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Orcas">
+                <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                    <h3 class="uk-margin-remove">Welcome Whale Enthusiasts!</h3>
+                </div>            
             </li>
             <li>
                 <img class="ss-pic" src="https://images.pexels.com/photos/3329230/pexels-photo-3329230.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Gray whale">
+                <div class="uk-overlay uk-overlay-primary uk-position-left uk-text-center uk-transition-slide-left uk-width-medium">
+                    <h3 class="uk-margin-remove"><a href="/sightings">Sightings</a></h3>
+                    <p class="uk-margin-remove">Find out if our magestic whale populations are your area from users just like you!</p>
+                </div>
             </li>
             <li>
                 <img class="ss-pic" src="https://images.pexels.com/photos/3695720/pexels-photo-3695720.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Orca family">
+                <div class="uk-overlay uk-overlay-primary uk-position-right uk-text-center uk-transition-slide-right uk-width-medium">
+                    <h3 class="uk-margin-remove"><a href="/resources">Local Resources</a></h3>
+                    <p class="uk-margin-remove">Learn more about local groups who are doing their part to help the whale population and environment. See what you can do to help!</p>
+                </div>
             </li>
             <li>
                 <img class="ss-pic" src="https://images.pexels.com/photos/51964/humpback-whale-natural-spectacle-nature-mammal-51964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Humpback whales">
+                <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom uk-width-medium">
+                    <h3 class="uk-margin-remove"><a href="/resources">Want to participate?</a></h3>
+                    <p class="uk-margin-remove">Sign up to receive notifications of sightings in your area and, if you're one of the lucky ones, be able to post your own and share with others.</p>
+                </div>
             </li>
             <li>
                 <img class="ss-pic" src="https://images.pexels.com/photos/3309865/pexels-photo-3309865.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Orca surfacing">
@@ -67,14 +79,7 @@
                 <li uk-slideshow-item="4"><a href="#">Item 5</a></li>
             </ul>
         </div>
-    </div>
-</div>
-<hr class="uk-divider-icon">
-<div uk-grid>
-    <div class="uk-card uk-card-hover uk-card-body uk-card-small uk-card-secondary uk-width-1-2@s uk-text-center">
-        <h3 class="uk-card-title"><a href="/resources">Find Out More</a></h3>
-    </div>
-    <div class="uk-card uk-card-hover uk-card-body uk-card-small uk-card-secondary uk-width-1-2@s uk-text-center">
-        <h3 class="uk-card-title"><a href="/sightings">View Local Sightings</a></h3>
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
     </div>
 </div>
