@@ -57,7 +57,8 @@ module.exports = function(app) {
         sighting: arr,
         username: username
       }
-      res.render("sightings", hbsObject);
+      // res.render("sightings", hbsObject);
+      res.render("resources");
     });
   });
 
