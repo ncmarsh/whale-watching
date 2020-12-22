@@ -21,12 +21,12 @@
         </ul>
     </div>    
     <div class="uk-card-body">
-        {{!-- <ul>
+        <ul>
             <li class="sight-list">
                 {{!-- <h6>Location on map</h6> --}}
                 <div id="dispMap{{lat}}{{lng}}" class="post-map"></div>                               
             </li>
-        </ul> --}}
+        </ul>
         <div class="uk-text-right">
             Posted by: {{ userName }}
             {{#if isAuthor }}
@@ -36,4 +36,18 @@
     </div>
 </div>
 
+<script>        
+    var lnglatArr = [{{ lng }}, {{ lat }}]; 
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2lybWFkIiwiYSI6ImNraXFnNGFiNjFjaWIzOG84aGpvd2xtOGIifQ.7CC9ym81Xt2gfUcxbB2Lkg';
+    
+    var dispMap = new mapboxgl.Map({
+        container: "dispMap{{lat}}{{lng}}",
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: lnglatArr,
+        zoom: 9
+    });
+    var marker = new mapboxgl.Marker()
+    .setLngLat(lnglatArr)
+    .addTo(dispMap);       
+</script> 
 
