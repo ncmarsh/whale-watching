@@ -9,12 +9,25 @@
     font-size: 1rem;
 }
 
+/* Signup/Login Modals */
+.modal-width {
+    width: auto;
+}
+
+#login-btn,
+#signup-btn {
+    border-radius: 5px;
+    background-color: #1540ff;
+}
+
 /* Welcome page */
 /* Slide show images */
 .ss-pic {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    height: auto;
+    width: 100%;
 }
 
 /* Background for other pages */
@@ -32,6 +45,12 @@ div.wallpaper {
     margin-top: 1rem;
     margin-left: 80%;
     position: fixed;
+    background-color: #47a17c;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 100%;
+    font-weight: bold;
+    border: 2px #000000 solid;
 } 
 
 /* Draggable map marker */
@@ -51,11 +70,11 @@ div.wallpaper {
 
 /* Sighting post cards*/
 .sighting-post {
-    margin-left: 25%;
-    margin-right: 25%;
+    /* margin-left: 25%;
+    margin-right: 25%; */
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 50%;
+    /* width: 50%; */
     border-radius: 15px;
     padding: 20px;
     border: 2px solid #bbbbbb;
@@ -67,6 +86,16 @@ div.wallpaper {
 
 li.sight-list {
     list-style-type: none;
+}
+
+.list-map {
+    float: right;
+    clear: none;
+}
+
+.post-map {
+    height: 200px; 
+    max-width: 150px;
 }
 
 .edit-buttons {
@@ -82,20 +111,25 @@ button.user-edit {
 }
 
 /* Resources Page */
+.resource-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
 /* Full resource card */
 .resource-card {
     margin-top: 1.5rem;
-    margin-left: 9rem;
-    margin-right: 3rem;
-    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
     opacity: 85%;
+    padding: 0;
 }
 
 /* Size and position of logos */
 .logo-div {
     display: block;
     margin: 1rem;
-    max-width: 300px;
+    max-width: 350px;
     max-height: 250px;
     padding: 0;
 }
@@ -116,3 +150,4 @@ button.user-edit {
 .link {
     color: #000000;
 }
+
