@@ -109,11 +109,7 @@ module.exports = function(app) {
         receiveNotification: true
       }
     }).then(function(data) {
-      console.log("Users to be notified: ", data);
-      // data.forEach(element => {
-      //   console.log("About to message ", element);
-        // notifySubscribers(data, msg);
-      // });
+      console.log("Users to be notified: ", data);      
     })
   };
 
