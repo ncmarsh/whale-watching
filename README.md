@@ -17,7 +17,14 @@ Be notified of local whale sightings and, if you're one of the lucky ones, be ab
 
 ## Usage
 
-This application allows users to be notified when whales are spotted in the area by having an account through the site. Users post sightings to the page and notifications are sent via text to the other users. There is also information about local organizations in the area that aim to improve the lives of our local whale population.   
+This application allows users to be notified when whales are spotted in the area by having an account through the site. Users post sightings to the page and notifications are sent via text to the other users. 
+![Add New Sighting](./public/images/readme-img/add-post_screenshot.png)
+
+Users can view all posts with a description of where, map of the location and if available, a link to an image.
+![Sightings Page](./public/images/readme-img/sightings_screenshot.png)
+
+There is also information about local organizations in the area that aim to improve the lives of our local whale population.  
+![Resources Page](./public/images/readme-img/resources_screenshot.png) 
 
 ## Languages and Concepts
 
@@ -35,7 +42,7 @@ This application allows users to be notified when whales are spotted in the area
 
 ## Demo
 
-
+![Demo](./public/images/readme-img/demo.gif)
 
 ## Roadmap
 
