@@ -35,7 +35,7 @@ This application allows users to be notified when whales are spotted in the area
 
 ## Demo
 
-
+![Demo](./public/images/readme-img/demo.gif)
 
 ## Roadmap
 
