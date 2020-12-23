@@ -30,7 +30,8 @@ This application allows users to be notified when whales are spotted in the area
 - [MySQL](https://www.mysql.com/)
 - [Mapbox API](https://docs.mapbox.com/api/overview/)
 - [Multer](https://www.npmjs.com/package/multer)
-- [AWS-SDK](https://www.npmjs.com/package/aws-sdk)
+- [AWS S3](https://aws.amazon.com/s3/)
+- [AWS SNS](https://aws.amazon.com/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
 
 ## Demo
 
@@ -38,7 +39,7 @@ This application allows users to be notified when whales are spotted in the area
 
 ## Roadmap
 
-Along the way we had many ideas come into mind that we would like to incorporate: a linter like ES Lint; Travis CI; using a custom pin whale icon on the map; a single overview map that displays all the sightings listed; add filters to view results by whale, time period, location, or view own posts; manage user account - allow users to edit their information, change their password, change notification settings, and delete their user account; add notifications via email (user choice) and allow users to specify locations they want to hear about; user's upload images load to a gallery page; add login via Facebook/Google/Twitter; add user data to user profile - a badge to show how many posts they've made; add verification system so users can verify other's post if they see the same whale(s); add specific error messages - if input is left blank or if email/password is incorrect at login.
+Along the way we had many ideas come into mind that we would like to incorporate: a linter like ES Lint; Travis CI; sanitizing the input fields; using a custom pin whale icon on the map; a single overview map that displays all the sightings listed; add filters to view results by whale, time period, location, or view own posts; manage user account - allow users to edit their information, change their password, change notification settings, and delete their user account; add notifications via email (user choice) and allow users to specify locations they want to hear about; user's upload images load to a gallery page; add login via Facebook/Google/Twitter; add user data to user profile - a badge to show how many posts they've made; add verification system so users can verify other's post if they see the same whale(s); add specific error messages - if input is left blank or if email/password is incorrect at login.
 
 ## Links
 
