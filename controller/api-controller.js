@@ -9,14 +9,11 @@ module.exports = function(app) {
 
   // POST route for saving a new sighting
   app.post("/api/sightings", function(req, res) {
-    console.log("Making new post! ", req.body);
-    console.log(req.body)
     db.Sighting.create(      
       req.body
     ).then(function(data) {
       res.json(data.dataValues);
-      console.log("Made a post sightings with data: ", data.dataValues)
-      // fetchSubscribers(data); //SNS Notification system. Hushed for dev.
+      fetchSubscribers(data); //SNS Notification system. Hushed for dev.
     })
   });
 
@@ -61,7 +58,6 @@ module.exports = function(app) {
 
   //POST route for loggin in a known user
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    console.log("Trying to login!!!!");
     res.json(req.user);
   });
 
@@ -85,7 +81,6 @@ module.exports = function(app) {
 
   // POST route for saving a new user
   app.post("/api/signup", function(req, res) {
-    console.log("Creating new user! ", req.body);
     db.User.create(
       req.body
     ).then(function() {
@@ -150,8 +145,6 @@ app.post("/api/upload", upload.single("myPicture"), async function(req, res) {
               }
             }
           ).then(function() {
-            // res.json(data);
-            console.log(`Sighting has been updated with data.`);
           })
         });
       }
@@ -172,7 +165,6 @@ app.post("/api/upload", upload.single("myPicture"), async function(req, res) {
     }).then(function(data) {
       console.log("Users to be notified: ");
       data.forEach(element => {
-        // console.log(`+1${element.phoneNumber}`, msg);
         notifySubscribers(`+1${element.phoneNumber}`, msg);
       });
     })

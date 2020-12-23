@@ -62,7 +62,6 @@ module.exports = function(app) {
         username: username
       }
       res.render("sightings", hbsObject);
-      // res.render("resources");
     });
   });
 
