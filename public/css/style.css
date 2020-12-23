@@ -49,7 +49,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    height: 100vh;
+}
+
+.wallpaper-sightings {
+    height: 100vh;    
+    width: auto;
+}
+
+.wallpaper-resources {
+    height: 100%;
     width: auto;
 }
 
