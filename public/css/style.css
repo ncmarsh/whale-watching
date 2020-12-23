@@ -29,7 +29,7 @@
 /* Welcome page */
 /* Slide show */
 .ss-container {
-    height: 100vh;
+    height: 100%;
     width: auto;
 }
 
@@ -39,12 +39,12 @@
     display: block;
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: auto;
 }
 
 /* Background for other pages */
 /* Background */
-div.wallpaper {
+.wallpaper {
     background-image: url(https://images.pexels.com/photos/3325908/pexels-photo-3325908.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
     background-repeat: no-repeat;
     background-size: cover;
@@ -64,7 +64,7 @@ div.wallpaper {
     color: #000000;
     font-size: 100%;
     font-weight: bold;
-    border: 2px #000000 solid;
+    border: 2px;
 } 
 
 #pictureId {
