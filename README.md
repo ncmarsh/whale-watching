@@ -29,6 +29,8 @@ This application allows users to be notified when whales are spotted in the area
 - [Sequelize](https://sequelize.org/)
 - [MySQL](https://www.mysql.com/)
 - [Mapbox API](https://docs.mapbox.com/api/overview/)
+- [Multer](https://www.npmjs.com/package/multer)
+- [AWS-SDK](https://www.npmjs.com/package/aws-sdk)
 
 ## Demo
 
